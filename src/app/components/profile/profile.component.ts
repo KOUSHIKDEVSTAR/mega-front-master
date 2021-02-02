@@ -4,6 +4,7 @@ import {ResponseModel, UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -20,22 +21,20 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.userData$
-      .pipe(
-        map((user: SocialUser | ResponseModel) => {
-          if (user instanceof SocialUser || user.type === 'social') {
-            return {
-              ...user,
-              email: 'test@test.com',
-
-            };
-          } else {
-            return user;
-          }
-        })
-      )
+    
       .subscribe((data: ResponseModel | SocialUser) => {
+        
+        
         this.myUser = data;
       });
+      let email= localStorage.getItem('email');
+      let userRole= localStorage.getItem('userRole');
+     
+      if(email){        
+       
+        this.userService.UserDataFatch(email);
+      }
+      
   }
 
   logout() {

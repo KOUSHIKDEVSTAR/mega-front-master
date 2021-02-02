@@ -1,0 +1,131 @@
+<div class="container emp-profile">
+    <form novalidate>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile-img">
+            <img src="https://i.pinimg.com/originals/dc/55/a0/dc55a0fec14d93d9cf6fa32c32f7c7f2.jpg" alt="{{myUser?.user?.firstName || myUser?.user?.fname}}"/>
+            <!-- <div class="file btn btn-lg btn-primary">
+              Change Photo
+              <input name="file" type="file"/>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="profile-head">
+            <h5>
+              {{myUser?.name || (myUser?.user?.fname + ' ' + myUser?.user?.lname)}}
+            </h5>
+            <h6>
+              Web Developer and Designer
+            </h6>
+           
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home" id="home-tab"
+                   role="tab">About</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button (click)="logout()" class="btn btn-secondary btn-sm" name="btnAddMore" type="button">Logout</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile-work">
+            <p>Post For Vendor</p>
+            <ul>
+              <li>
+                <h3 class="ml-1">Accomodation</h3>
+                <ul class="sub-menu" aria-expanded="false">
+                    
+                  <li><a href="/vendor-accomodationAdd">Accomodation Add</a></li>
+                  <li><a href="/vendor-accomodation-list">Accomodation List</a></li>
+                    
+                   
+                    
+                </ul>
+            </li>
+            <li>
+              <h3 class="ml-1">Jobs</h3>
+              <ul class="sub-menu" aria-expanded="false">
+                  
+                <li><a href="/vendor-job-add">Jobs Add</a></li>
+                <li><a href="/vendor-job-list">Jobs List</a></li>
+                  
+                 
+                  
+              </ul>
+          </li>
+          <li>
+            <h3 class="ml-1">Food</h3>
+            <ul class="sub-menu" aria-expanded="false">
+                
+              <li><a href="/vendor-food-add">Food Add</a></li>
+              <li><a href="/vendor-food-list">Food List</a></li>
+                
+               
+                
+            </ul>
+        </li>
+            </ul>
+            
+            
+            
+           
+            
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="tab-content profile-tab" id="myTabContent">
+            <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>User Id</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{myUser?.user?.id || myUser?.user?.userId}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Name</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{myUser?.user?.name || myUser?.user?.username}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Email</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{myUser?.user?.email}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Phone</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{myUser?.user?.phone}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Profession</label>
+                </div>
+                <div class="col-md-6">
+                  <p>Vendor</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  

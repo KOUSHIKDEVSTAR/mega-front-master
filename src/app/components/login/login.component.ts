@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   password: string;
   loginMessage: string;
   userRole: number;
-
+ 
   constructor(private authService: AuthService,
               private router: Router,
               private userService: UserService,
@@ -24,7 +24,27 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.userService.authState$.subscribe(authState => {
       if (authState) {
-        this.router.navigateByUrl(this.route.snapshot.queryParams.returnUrl || '/profile');
+        let userRole = localStorage.getItem('userRole')
+        
+        
+        // this.router.navigateByUrl(this.route.snapshot.queryParams.returnUrl || '/profile');
+        if (userRole == '777') {
+              this.router.navigateByUrl('admin').then();
+            }
+            if (userRole == '555') {
+             
+              
+              this.router.navigateByUrl('profile').then();
+            }
+            if (userRole == '666') {
+             
+              this.router.navigateByUrl('vendor-profile').then();
+              
+            }
+
+            
+            
+
 
       } else {
         this.router.navigateByUrl('/login');
@@ -54,7 +74,7 @@ export class LoginComponent implements OnInit {
       this.loginMessage = msg;
       setTimeout(() => {
         this.loginMessage = '';
-      }, 2000);
+      }, 5000);
     });
 
 

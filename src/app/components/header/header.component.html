@@ -9,9 +9,23 @@
         <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
       </ul>
       <ul class="header-links pull-right">
-        <li><a routerLink="/profile"><i class="fa fa-sign-in"></i> {{authState === false ? 'LOGIN' : 'My Account'}}</a></li>
-        <li *ngIf="!authState"><a routerLink="/register"><i class="fa fa-user-plus"></i> REGISTER</a></li>
-        <!-- <li><a routerLink="/admin" *ngIf="authState"><i class="fa fa-user-plus"></i> ADMIN</a></li> -->
+       
+        <ng-container *ngIf="getRole() == '555'">
+        <li><a routerLink="/profile"><i class="fa fa-sign-in"></i>User</a></li>
+        <li *ngIf="!authState"><a routerLink="/profile"><i class="fa fa-user"></i> {{myUser?.name || (myUser?.user?.fname + ' ' + myUser?.user?.lname)}}</a></li>
+        </ng-container>
+
+        <ng-container *ngIf="getRole()=='666'">
+          <li><a routerLink="/vendor-profile"><i class="fa fa-sign-in"></i> Vendor</a></li>
+          <li *ngIf="!authState"><a routerLink="/vendor-profile"><i class="fa fa-user"></i> {{myUser?.name || (myUser?.user?.fname + ' ' + myUser?.user?.lname)}}</a></li>
+          </ng-container>
+
+          <ng-container *ngIf="!getRole()">
+            <li><a routerLink="/profile"><i class="fa fa-sign-in"></i> {{authState === false ? 'LOGIN' : 'My Account'}}</a></li>
+            <li *ngIf="!authState"><a routerLink="/register"><i class="fa fa-user-plus"></i> REGISTER</a></li>
+            </ng-container>
+        
+        
       </ul>
     </div>
   </div>
@@ -52,15 +66,7 @@
         <!-- ACCOUNT -->
         <div class="col-md-3 clearfix">
           <div class="header-ctn">
-            <!-- Wishlist -->
-            <!-- <div>
-              <a href="#">
-                <i class="fa fa-heart-o"></i>
-                <span>Your Wishlist</span>
-                <div class="qty">0</div>
-              </a>
-            </div> -->
-            <!-- /Wishlist -->
+          
 
             <!-- Cart -->
             <div class="dropdown">
@@ -122,10 +128,13 @@
     <div id="responsive-nav">
       <!-- NAV -->
       <ul class="main-nav nav py-3">
-        <li class="active"><a routerLink="/">Home</a></li>
-        <li><a href="/jobs">Jobs</a></li>
-        <!-- <li><a href="#">Categories</a></li>
-        <li><a href="#">Contact Us</a></li> -->
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/jobs">Jobs</a></li>
+        <li><a routerLink="/accomodations">Accomodations</a></li>
+        <li><a routerLink="/food">Food</a></li>
+        
+        <!-- <li><a href="#">Categories</a></li>-->
+        <li><a href="#">Contact Us</a></li>
       </ul>
       <!-- /NAV -->
     </div>
