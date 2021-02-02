@@ -14,8 +14,8 @@ import {ThankyouComponent} from '@app/components/thankyou/thankyou.component';
 import {HttpClientModule} from '@angular/common/http';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {ToastrModule} from 'ngx-toastr';
-// import {MatPaginator} from '@angular/material/paginator';
-// import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -86,6 +86,8 @@ export function provideConfig() {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatTableModule,
     NoopAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

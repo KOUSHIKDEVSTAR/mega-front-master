@@ -16,6 +16,8 @@ import { JobsComponent } from './components/jobs/jobs.component';
 import { VendorLoginComponent } from './components/vendor-login/vendor-login.component';
 import { AccomodationAddComponent } from './components/accomodation-add/accomodation-add.component';
 import { AccomodationVendorListComponent } from './components/accomodation-vendor-list/accomodation-vendor-list.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 import { AccomodationEditComponent } from './components/accomodation-edit/accomodation-edit.component';
 import { JobAddComponent } from './components/job-add/job-add.component';
 import { JobEditComponent } from './components/job-edit/job-edit.component';
@@ -39,7 +41,8 @@ const routes: Routes = [
     component: HomeLayoutComponent,
     children: [
       {
-        path: '', component: HomeComponent
+        path: '', 
+        component: HomeComponent
       },
       {
         path: 'product/:id', component: ProductComponent
@@ -120,7 +123,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    // MatPaginator,
+    // MatTableDataSource
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
