@@ -5,12 +5,12 @@ import {environment} from '../../environments/environment';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
-
+import {AccomodationmodelServer, ServerResponse} from '../models/Accomodation.model';
 @Injectable({
   providedIn: 'root'
 })
 export class JobService {
-  auth = false;
+  auth = true;
   private SERVER_URL = environment.SERVER_URL;
   private job;
   authState$ = new BehaviorSubject<boolean>(this.auth);
@@ -19,7 +19,9 @@ export class JobService {
   jobRole$ = new BehaviorSubject<string>(null);
   
 
-  constructor(private authService: AuthService,
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
               private httpClient: HttpClient,
               private router: Router) {
 
@@ -43,15 +45,44 @@ export class JobService {
      
     });
   }
+ /* This is to fetch all products from the backend server */
+//  getAllProducts() : Observable<ServerResponse> {
+//   return this.http.get<ServerResponse>(this.SERVER_URL + '/job/all-job');
+// }
+getAllProducts(formData: any): Observable<{ message: string }> {
+  const {userID, 
+  } = formData;
+// return this.http.get<ServerResponse>(this.SERVER_URL + '/accomodation/all-accomodation');
+return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/all-job`, {
+  userID
+});
+}
+/*Fatch Data*/
+
+fatchData(formData: any): Observable<{ message: string }> {
+  const {job_post_id, 
+    } = formData;
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/dataView`, {
+    job_post_id
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
 
-
-// export interface ResponseModel {
-//   title: string;
-//   post_content: string;
-//   job_price: string;
- 
- 
-// }

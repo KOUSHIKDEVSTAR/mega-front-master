@@ -16,6 +16,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 import {ToastrModule} from 'ngx-toastr';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -93,6 +94,7 @@ export function provideConfig() {
     HttpClientModule,
     NgxSpinnerModule,
     ToastrModule.forRoot(),
+    SweetAlert2Module.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,

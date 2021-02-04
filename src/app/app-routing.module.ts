@@ -87,13 +87,13 @@ const routes: Routes = [
         path: 'vendor-job-add', component: JobAddComponent , canActivate: [VendorGuard]
       },
       {
-        path: 'vendor-job-edit', component: JobEditComponent , canActivate: [VendorGuard]
+        path: 'vendor-job-edit/:id', component: JobEditComponent , canActivate: [VendorGuard]
       },
       {
         path: 'vendor-accomodationAdd', component: AccomodationAddComponent , canActivate: [VendorGuard]
       },
       {
-        path: 'vendor-accomodation-edit', component: AccomodationEditComponent , canActivate: [VendorGuard]
+        path: 'vendor-accomodation-edit/:id', component: AccomodationEditComponent , canActivate: [VendorGuard]
       },
       {
         path: 'vendor-accomodation-list', component: AccomodationVendorListComponent , canActivate: [VendorGuard]

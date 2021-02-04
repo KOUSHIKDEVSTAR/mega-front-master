@@ -5,12 +5,12 @@ import {environment} from '../../environments/environment';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
-
+import {AccomodationmodelServer, ServerResponse} from '../models/Accomodation.model';
 @Injectable({
   providedIn: 'root'
 })
 export class AccomodationService {
-  auth = false;
+  auth = true;
   private SERVER_URL = environment.SERVER_URL;
   private accomodation;
   authState$ = new BehaviorSubject<boolean>(this.auth);
@@ -18,14 +18,17 @@ export class AccomodationService {
   loginMessage$ = new BehaviorSubject<string>(null);
   accomodationRole$ = new BehaviorSubject<string>(null);
   
-
-  constructor(private authService: AuthService,
+  
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
               private httpClient: HttpClient,
               private router: Router) {
 
    
   }
-
+ 
+  
 
   registeraccomodation(formData: any): Observable<{ message: string }> {
     const {title, 
@@ -55,15 +58,73 @@ export class AccomodationService {
      
     });
   }
+ /* This is to fetch all products from the backend server */
+ getAllProducts(formData: any): Observable<{ message: string }> {
+    const {userID, 
+    } = formData;
+  // return this.http.get<ServerResponse>(this.SERVER_URL + '/accomodation/all-accomodation');
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/accomodation/all-accomodation`, {
+    userID
+  });
+}
+
+/*Fatch Data*/
+
+fatchaccomodation(formData: any): Observable<{ message: string }> {
+  const {accomodation_id, 
+    } = formData;
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/accomodation/accomodationView`, {
+    accomodation_id
+  });
+}
+/**Edit Data */
+editaccomodation(formData: any): Observable<{ message: string }> {
+  const {
+    accomodation_id,
+    title, 
+    post_content, 
+    accomodation_price,
+    post_short_content,
+    address,
+    accomodation_type,
+    bedroom,
+    bathroom,
+    parking_area,
+    floor_area,
+    
+    } = formData;
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/accomodation/accomodationEdit`, {
+    accomodation_id,
+    title,
+    post_content,
+    accomodation_price,
+    post_short_content,
+    address,
+    accomodation_type,
+    bedroom,
+    bathroom,
+    parking_area,
+    floor_area,
+    
+   
+  });
+}
+
+/*Delete Data*/
+
+deleteaccomodation(formData: any): Observable<{ message: string }> {
+  const {accomodation_id, 
+    } = formData;
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/accomodation/accomodationdelete`, {
+    accomodation_id
+  });
+}
+
+
 
 
 }
 
-
-// export interface ResponseModel {
-//   title: string;
-//   post_content: string;
-//   accomodation_price: string;
- 
- 
-// }

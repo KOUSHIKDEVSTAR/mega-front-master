@@ -1,1 +1,116 @@
-<p>job-vendor-list works!</p>
+
+<div class="container emp-profile">
+    <div class="row">
+      <!-- <div class="col-md-3">
+        <div class="profile-work">
+          <p>Post For Vendor</p>
+          <ul>
+            <li>
+              <h3 class="ml-1">Accomodation</h3>
+              <ul class="sub-menu" aria-expanded="false">
+                  
+                <li><a href="/vendor-accomodationAdd">Accomodation Add</a></li>
+                <li><a href="/vendor-accomodation-list">Accomodation List</a></li>
+                  
+                
+                  
+              </ul>
+          </li>
+          <li>
+            <h3 class="ml-1">Jobs</h3>
+            <ul class="sub-menu" aria-expanded="false">
+                
+              <li><a href="/vendor-job-add">Jobs Add</a></li>
+              <li><a href="/vendor-job-list">Jobs List</a></li>
+                
+              
+                
+            </ul>
+        </li>
+        <li>
+          <h3 class="ml-1">Food</h3>
+          <ul class="sub-menu" aria-expanded="false">
+              
+            <li><a href="/vendor-food-add">Food Add</a></li>
+            <li><a href="/vendor-food-list">Food List</a></li>
+              
+            
+              
+          </ul>
+      </li>
+          </ul>
+          
+          
+          
+        
+          
+        </div>
+      </div> -->
+      <div class="col-md-12">
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+        
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef> Title </th>
+              <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="address">
+              <th mat-header-cell *matHeaderCellDef> Address </th>
+              <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="job_type">
+              <th mat-header-cell *matHeaderCellDef> Job type </th>
+              <td mat-cell *matCellDef="let element"> {{element.job_type}} </td>
+            </ng-container>
+      
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="post_short_content">
+              <th mat-header-cell *matHeaderCellDef> Short content </th>
+              <td mat-cell *matCellDef="let element"> {{element.post_short_content}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="created_at">
+              <th mat-header-cell *matHeaderCellDef> Created On </th>
+              <td mat-cell *matCellDef="let element"> {{element.created_at | date: 'yyyy-MM-dd'}} </td>
+            </ng-container>
+      
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-button (click)="onclickEdit(element.job_id)">Edit</button>
+                <!-- <button mat-button (click)="onclickView(element.job_id)" color="primary">View</button>
+                <button mat-button (click)="onclickDelete(element.job_id)" color="accent">Delete</button> -->
+                
+              </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+      </div>
+
+    </div>
+</div>
+  
