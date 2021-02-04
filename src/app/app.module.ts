@@ -16,6 +16,8 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 import {ToastrModule} from 'ngx-toastr';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
@@ -91,6 +93,8 @@ export function provideConfig() {
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
     NoopAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
