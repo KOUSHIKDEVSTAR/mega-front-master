@@ -47,8 +47,14 @@
         </div>
       </div> -->
       <div class="col-md-12">
+        <!-- filter table -->
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia">
+        </mat-form-field>
+        <!-- filter table -->
         <div class="mat-elevation-z8">
-          <table mat-table [dataSource]="dataSource">
+          <table mat-table [dataSource]="dataSource" matSort>
         
             <!-- Position Column -->
             <ng-container matColumnDef="position">
