@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  SERVER_URL: 'http://3.25.66.75:9001/api',
+  SERVER_URL: 'https://damp-temple-19541.herokuapp.com/api',
 };
