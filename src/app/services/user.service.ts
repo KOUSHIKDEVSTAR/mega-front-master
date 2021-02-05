@@ -81,7 +81,7 @@ export class UserService {
             this.auth = true;
             this.authState$.next(this.auth);
             this.userData$.next(data);
-            console.log('After login    ',data);
+            // console.log('After login    ',data);
             
             let role = data.role;
             
@@ -135,7 +135,7 @@ export class UserService {
   }
 
   registerUser(formData: any, photoUrl?: string, typeOfUser?: string): Observable<{ message: string }> {
-    const {fname, lname, email, password, role} = formData;
+    const {fname, lname, email, password, role,gender,dob,field_of_study,university_name,student_id,student_exp_date,course_name} = formData;
     
     return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/auth/register`, {
       email,
@@ -144,12 +144,84 @@ export class UserService {
       typeOfUser,
       password,
       role,
-      photoUrl: photoUrl || null
+      gender,
+      dob,
+      field_of_study,
+      university_name,
+      student_id,
+      student_exp_date,
+      course_name
     });
   }
+/*Fatch Data*/
+
+fatchData(formData: any): Observable<{ message: string }> {
+  const {id, 
+    } = formData;
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/auth/dataView`, {
+    id
+  });
+}
+
+/**Edit Data */
+editData(formData: any): Observable<{ message: string }> {
+  const {
+    id,
+    fname, 
+    lname, 
+    email,
+    gender,
+    dob,
+    field_of_study,
+    university_name,
+    student_id,
+    student_exp_date,
+    course_name,
+    
+    } = formData;
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/auth/dataEdit`, {
+    id,
+    fname,
+    lname,
+    email,
+    gender,
+    dob,
+    field_of_study,
+    university_name,
+    student_id,
+    student_exp_date,
+    course_name,
+   
+    
+   
+  });
+}
+
+/**Image Data */
+imageData(formData: any,vendor,id): Observable<{ message: string }> {
+ 
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/images/uploadProductImage/${vendor}/${id}`, formData);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
+
 
 
 export interface ResponseModel {

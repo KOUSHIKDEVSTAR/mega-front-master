@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
     
     let email = localStorage.getItem('email')
     this.userRole = localStorage.getItem('userRole')
-    console.log('heade',this.userRole);
+    // console.log('heade',this.userRole);
     
     if(email){        
        

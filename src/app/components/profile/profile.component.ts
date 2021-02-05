@@ -36,6 +36,11 @@ export class ProfileComponent implements OnInit {
       }
       
   }
+  onclickEdit(id){    
+    // console.log(id);
+    
+    this.router.navigate(['/profile-edit//', id]);   
+  }
 
   logout() {
     this.userService.logout();

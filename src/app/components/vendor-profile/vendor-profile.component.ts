@@ -22,6 +22,7 @@ export class VendorProfileComponent implements OnInit {
         
         
         this.myUser = data;
+      //  console.log('data: ',data);
        
         
         // localStorage.setItem('userID', this.myUser.id);
@@ -34,6 +35,14 @@ export class VendorProfileComponent implements OnInit {
         this.userService.UserDataFatch(email);
       }
   }
+
+  onclickEdit(id){    
+    // console.log(id);
+    
+    this.router.navigate(['/vendor-profile-edit/', id]);   
+  }
+
+
   logout() {
     this.userService.logout();
   }

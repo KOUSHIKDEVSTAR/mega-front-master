@@ -13,7 +13,8 @@ import {ProductComponent} from '@app/components/product/product.component';
 import {ThankyouComponent} from '@app/components/thankyou/thankyou.component';
 import {HttpClientModule} from '@angular/common/http';
 import {NgxSpinnerModule} from 'ngx-spinner';
-import {ToastrModule} from 'ngx-toastr';
+// import {ToastrModule} from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -43,6 +44,9 @@ import { FoodEditComponent } from './components/food-edit/food-edit.component';
 import { FoodVendorListComponent } from './components/food-vendor-list/food-vendor-list.component';
 import { FoodComponent } from './components/food/food.component';
 import { AccomodationVendorViewComponent } from './components/accomodation-vendor-view/accomodation-vendor-view.component';
+import { VendorProfileEditComponent } from './components/vendor-profile-edit/vendor-profile-edit.component';
+import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 
 
 const config = new AuthServiceConfig([
@@ -86,7 +90,10 @@ export function provideConfig() {
     FoodEditComponent,
     FoodVendorListComponent,
     FoodComponent,
-    AccomodationVendorViewComponent
+    AccomodationVendorViewComponent,
+    VendorProfileEditComponent,
+    VendorRegisterComponent,
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,

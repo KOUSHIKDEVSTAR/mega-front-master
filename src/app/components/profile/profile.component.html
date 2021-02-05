@@ -27,6 +27,7 @@
         </div>
       </div>
       <div class="col-md-2">
+        <button (click)="onclickEdit(myUser?.user?.id || myUser?.user?.userId)" class="btn btn-secondary btn-sm" name="btnAddMore" type="button">Edit Profile</button>
         <button (click)="logout()" class="btn btn-secondary btn-sm" name="btnAddMore" type="button">Logout</button>
       </div>
     </div>

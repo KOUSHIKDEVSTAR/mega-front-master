@@ -22,7 +22,8 @@
 
           <ng-container *ngIf="!getRole()">
             <li><a routerLink="/profile"><i class="fa fa-sign-in"></i> {{authState === false ? 'LOGIN' : 'My Account'}}</a></li>
-            <li *ngIf="!authState"><a routerLink="/register"><i class="fa fa-user-plus"></i> REGISTER</a></li>
+            <li *ngIf="!authState"><a routerLink="/register"><i class="fa fa-user-plus"></i>STUDENT REGISTER</a></li>
+            <li *ngIf="!authState"><a routerLink="/vendor-register"><i class="fa fa-user-plus"></i>VENDOR REGISTER</a></li>
             </ng-container>
         
         

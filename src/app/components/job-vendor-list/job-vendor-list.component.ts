@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
 import { JobService } from '@app/services/job.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import Swal from 'sweetalert2';
@@ -16,19 +17,25 @@ export class JobVendorListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['position', 'title', 'address', 'job_type','post_short_content','created_at','status','action'];
   dataSource = new MatTableDataSource<any>([]);
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;  
 
   constructor(
     private jobService: JobService,
     private router: Router,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
+    this.cdr.detectChanges();
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
+    this.cdr.detectChanges();
     let userID= localStorage.getItem('userID');
     let bodydata = { userID: userID}; 
     this.jobService.getAllProducts(bodydata).subscribe((prods: any) => {
       this.products = prods.data;
      
-      this.dataSource = prods.data.map((item, index)=> {
+      let data = prods.data.map((item, index)=> {
         return {
           position: index+1, 
           title:item.job_post_title, 
@@ -42,8 +49,13 @@ export class JobVendorListComponent implements OnInit, AfterViewInit {
       })
       // console.log('All DATA   ', this.dataSource);
       // this.dataSource = this.products;
-
-      
+      this.dataSource = new MatTableDataSource<any>(data);
+      this.cdr.detectChanges();
+      // console.log('All DATA   ', this.dataSource);
+      // this.dataSource = this.products; 
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.cdr.detectChanges(); 
       
     }, error => {
       console.log(error);      
@@ -122,6 +134,13 @@ export class JobVendorListComponent implements OnInit, AfterViewInit {
     })
     
   }
- 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
 }

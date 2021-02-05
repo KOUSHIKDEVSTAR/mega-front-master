@@ -1,0 +1,179 @@
+<div class="container my-5">
+    <ng-container *ngIf="registrationMessage?.length > 0">
+      <div class="alert alert-success alert-dismissible">
+        {{registrationMessage}}
+      </div>
+    </ng-container>
+  
+    <form (ngSubmit)="editData()" [formGroup]="vendorForm" class="form-horizontal" novalidate>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <h2>Edit User Profile Vendor</h2>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">First Name</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+              <input class="form-control" formControlName="fname" id="fname" name="fname"
+                     placeholder="John"
+                     required type="text">
+                     <input class="form-control" formControlName="id" id="id" name="id"
+                     placeholder="John"
+                     required type="hidden">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+                          <span class="text-danger align-middle">
+                              <!-- Put name validation error messages here -->
+                          </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="lname">Last Name</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+              <input class="form-control" formControlName="lname" id="lname" name="lname"
+                     placeholder="Doe"
+                     required type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+                          <span class="text-danger align-middle">
+                              <!-- Put name validation error messages here -->
+                          </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="email">E-Mail Address</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+              <input class="form-control" formControlName="email" id="email" name="email"
+                     placeholder="you@example.com"
+                     required type="text" readonly>
+            </div>
+          </div>
+  
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Company Name</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+              <input class="form-control" formControlName="company_name" id="company_name" name="company_name"
+           placeholder="Company Name"
+           required type="text">
+           <input class="form-control" formControlName="role" id="role" name="role"
+              placeholder="Doe"
+              required type="hidden">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+                          <span class="text-danger align-middle">
+                              <!-- Put name validation error messages here -->
+                          </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Company Address</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+              <input class="form-control" formControlName="company_address" id="company_address" name="company_address"
+           placeholder="Company Address"
+           required type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+                          <span class="text-danger align-middle">
+                              <!-- Put name validation error messages here -->
+                          </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Company About</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+              <input class="form-control" formControlName="company_about" id="company_about" name="company_about"
+           placeholder="Company About"
+           required type="text">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+                          <span class="text-danger align-middle">
+                              <!-- Put name validation error messages here -->
+                          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="email">Profile Image</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+              <input class="form-control" (change)="onFileSelect($event)"  id="productImages" name="productImages"
+                     
+                     required type="file" readonly>
+            </div>
+          </div>
+  
+        </div>
+        
+      </div>
+      
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <button [disabled]="(vendorForm.invalid || vendorForm.pending) && vendorForm.touched "
+                  class="btn btn-success" type="submit">
+            <i class="fa fa-user-plus"></i> Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

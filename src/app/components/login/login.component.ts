@@ -76,7 +76,9 @@ export class LoginComponent implements OnInit {
         this.loginMessage = '';
       }, 5000);
     });
-
+    // this.userService.registerUser({...this.registrationForm.value}).subscribe((response: any) => {
+    //   this.registrationMessage = response.message;
+    // });
 
   }
 }

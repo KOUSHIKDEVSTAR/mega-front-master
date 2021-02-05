@@ -28,6 +28,11 @@ import { FoodVendorListComponent } from './components/food-vendor-list/food-vend
 import { FoodAddComponent } from './components/food-add/food-add.component';
 import { FoodEditComponent } from './components/food-edit/food-edit.component';
 import { FoodComponent } from './components/food/food.component';
+import { VendorProfileEditComponent } from './components/vendor-profile-edit/vendor-profile-edit.component';
+import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
+
+
 
 
 
@@ -75,10 +80,19 @@ const routes: Routes = [
         path: 'profile', component: ProfileComponent, canActivate: [ProfileGuard]
       },
       {
+        path: 'profile-edit/:id', component: ProfileEditComponent, canActivate: [ProfileGuard]
+      },
+      {
         path: 'vendor-login', component: VendorLoginComponent
       },
       {
+        path: 'vendor-register', component: VendorRegisterComponent
+      },
+      {
         path: 'vendor-profile', component: VendorProfileComponent, canActivate: [VendorGuard]
+      },
+      {
+        path: 'vendor-profile-edit/:id', component: VendorProfileEditComponent, canActivate: [VendorGuard]
       },
       {
         path: 'vendor-job-list', component: JobVendorListComponent , canActivate: [VendorGuard]
