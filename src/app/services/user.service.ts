@@ -135,7 +135,15 @@ export class UserService {
   }
 
   registerUser(formData: any, photoUrl?: string, typeOfUser?: string): Observable<{ message: string }> {
-    const {fname, lname, email, password, role,gender,dob,field_of_study,university_name,student_id,student_exp_date,course_name} = formData;
+    const {fname, lname, email, password, role,gender,dob,field_of_study,university_name,student_id,student_exp_date,course_name, student_origin_country,
+      student_visa_type,
+      student_city_live,
+      address,
+      state,
+      suburb,
+      postcode,
+      phone,
+    } = formData;
     
     return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/auth/register`, {
       email,
@@ -150,7 +158,16 @@ export class UserService {
       university_name,
       student_id,
       student_exp_date,
-      course_name
+      course_name, 
+      student_origin_country,
+      student_visa_type,
+      student_city_live,
+      address,
+      state,
+      suburb,
+      postcode,
+      phone,
+      
     });
   }
 /*Fatch Data*/
@@ -178,6 +195,10 @@ editData(formData: any): Observable<{ message: string }> {
     student_id,
     student_exp_date,
     course_name,
+    student_origin_country,
+    student_visa_type,
+    student_city_live,
+     
     
     } = formData;
   
@@ -193,6 +214,9 @@ editData(formData: any): Observable<{ message: string }> {
     student_id,
     student_exp_date,
     course_name,
+    student_origin_country,
+    student_visa_type,
+    student_city_live,
    
     
    
@@ -204,6 +228,13 @@ imageData(formData: any,vendor,id): Observable<{ message: string }> {
  
   
   return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/images/uploadProductImage/${vendor}/${id}`, formData);
+}
+
+/**Image Data */
+imageDataregstu(formData: any,profileID,id): Observable<{ message: string }> {
+ 
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/images/uploadProductImage/${profileID}/${id}`, formData);
 }
 
 

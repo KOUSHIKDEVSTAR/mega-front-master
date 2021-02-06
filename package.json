@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-extensions/select-country": "^4.0.3",
     "@angular/animations": "~9.0.6",
     "@angular/cdk": "^9.2.4",
     "@angular/common": "~9.0.6",
@@ -27,6 +28,7 @@
     "ngx-spinner": "^9.0.1",
     "ngx-toastr": "^12.1.0",
     "rxjs": "~6.5.4",
+    "svg-country-flags": "^1.2.10",
     "sweetalert2": "^10.14.0",
     "tinymce": "^5.2.2",
     "tslib": "^1.10.0",

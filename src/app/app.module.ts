@@ -47,6 +47,7 @@ import { AccomodationVendorViewComponent } from './components/accomodation-vendo
 import { VendorProfileEditComponent } from './components/vendor-profile-edit/vendor-profile-edit.component';
 import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
+import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
 
 
 const config = new AuthServiceConfig([
@@ -100,6 +101,7 @@ export function provideConfig() {
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatTableModule,
+    MatSelectCountryModule.forRoot('de'),
     MatFormFieldModule,
     MatInputModule,
     NoopAnimationsModule,
