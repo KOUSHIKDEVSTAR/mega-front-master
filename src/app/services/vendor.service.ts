@@ -5,7 +5,7 @@ import {environment} from '../../environments/environment';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {AccomodationmodelServer, ServerResponse} from '../models/Accomodation.model';
+import {AccomodationmodelServer, ServerResponse} from '../models/accomodation.model';
 @Injectable({
   providedIn: 'root'
 })

@@ -48,6 +48,11 @@ import { VendorProfileEditComponent } from './components/vendor-profile-edit/ven
 import { VendorRegisterComponent } from './components/vendor-register/vendor-register.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
+import { ApplyJobComponent } from './components/apply-job/apply-job.component';
+import { ApplyJobListComponent } from './components/apply-job-list/apply-job-list.component';
+import { ApplyJobViewComponent } from './components/apply-job-view/apply-job-view.component';
+import { AccomodationViewComponent } from './components/accomodation-view/accomodation-view.component';
+import { JobViewComponent } from './components/job-view/job-view.component';
 
 
 const config = new AuthServiceConfig([
@@ -94,7 +99,12 @@ export function provideConfig() {
     AccomodationVendorViewComponent,
     VendorProfileEditComponent,
     VendorRegisterComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    ApplyJobComponent,
+    ApplyJobListComponent,
+    ApplyJobViewComponent,
+    AccomodationViewComponent,
+    JobViewComponent
   ],
   imports: [
     BrowserModule,

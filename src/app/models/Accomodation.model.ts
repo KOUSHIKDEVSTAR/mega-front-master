@@ -5,6 +5,7 @@ export interface AccomodationmodelServer {
   accomodation_price: string;
   post_short_content: string;
   accomodation_type_title: string;
+  accomodation_type: string;
   
 }
 

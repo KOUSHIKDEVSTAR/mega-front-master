@@ -1,0 +1,64 @@
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="">
+            <li><a href="#">Home</a></li>
+           
+            
+            <li class="active">{{myData.job_post_title}}</li>
+          </ul>
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /BREADCRUMB -->
+  
+  <!-- SECTION -->
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <!-- Product main img -->
+        
+  
+        <!-- Product thumb imgs -->
+        <div class="col-md-2  col-md-pull-5">
+          
+  
+        </div>
+        <!-- /Product thumb imgs -->
+  
+        <!-- Product details -->
+        <div class="col-md-5">
+          <div class="product-details">
+            <h2 >{{myData.job_post_title}}</h2>
+            
+            Job details:-
+            <p>
+              {{myData.job_post_content}}
+            </p>
+  
+            <button mat-button (click)="onclickApply(myData.job_id)" color="accent">Apply Job</button>
+  
+            
+  
+            
+  
+          </div>
+        </div>
+        <!-- /Product details -->
+  
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /SECTION -->
+  

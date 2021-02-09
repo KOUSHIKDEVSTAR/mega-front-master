@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EmailValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AccomodationService } from '@app/services/accomodation.service';
-
+import { v4 as uuidv4 } from 'uuid';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-accomodation-edit',
   templateUrl: './accomodation-edit.component.html',
@@ -17,6 +18,7 @@ export class AccomodationEditComponent implements OnInit {
     private fb: FormBuilder,
     private accomodationService: AccomodationService,
     private route: ActivatedRoute,
+    private toastr: ToastrService
 
   ) { 
     this.accomodationForm = fb.group({
@@ -31,6 +33,10 @@ export class AccomodationEditComponent implements OnInit {
       bathroom:['',[Validators.required]],
       parking_area:['',[Validators.required]],
       floor_area:['',[Validators.required]],
+      furnished:['',[Validators.required]],
+      dwelling_type:['',[Validators.required]],
+      available:['',[Validators.required]],
+      productImagesMulti:['',[Validators.required]],
     });
 
   }
@@ -45,13 +51,14 @@ export class AccomodationEditComponent implements OnInit {
   viewData(){
     let serverData = this.route.snapshot.paramMap.get('id');
    
+   
      let bodydata = { accomodation_id: serverData};   
 
     //@ts-ignore
     this.accomodationService.fatchaccomodation(bodydata).subscribe((response: any) => {
       // this.registrationMessage = response.message;
       this.myData = response.data[0];
-      // console.log('VIEW  ',this.myData);
+      console.log('VIEW  ',this.myData);
       this.accomodationForm.patchValue({
         accomodation_id: this.myData.accomodation_id,
         title: this.myData.title,
@@ -64,6 +71,9 @@ export class AccomodationEditComponent implements OnInit {
         floor_area: this.myData.floor_area,
         address: this.myData.address,
         post_short_content: this.myData.post_short_content,
+        furnished: this.myData.furnished,
+        dwelling_type: this.myData.dwelling_type,
+        available: this.myData.available,
       })
      
 
@@ -71,7 +81,16 @@ export class AccomodationEditComponent implements OnInit {
     });  
     
   }
-  
+  onFileSelect(event) {
+    
+    
+    if (event.target.files.length > 0) {
+      const file = event.target.files;
+      console.log('FILE UP  :', file);
+      
+      this.accomodationForm.get('productImagesMulti').setValue(file);
+    }
+  }
   editAccomodation() {
 
     if (this.accomodationForm.invalid) {
@@ -86,8 +105,29 @@ export class AccomodationEditComponent implements OnInit {
 
     // // @ts-ignore
     this.accomodationService.editaccomodation(bodydata).subscribe((response: { message: string }) => {
-      this.registrationMessage = response.message;
+      // this.registrationMessage = response.message;
+      if(response.message != ''){
 
+        var fd = new FormData();
+        // let imgId = uuidv4();
+        console.log('FILE DATA :', Array.from(this.accomodationForm.value.productImagesMulti));
+        let fileArr = Array.from(this.accomodationForm.value.productImagesMulti);
+
+        fileArr.forEach((file: any, index)=>{
+          let imgId = uuidv4();
+          fd.append(`productImagesMulti`, file, `${imgId}.jpg`);
+
+          if(index+1 == this.accomodationForm.value.productImagesMulti.length){
+            this.accomodationService.imageData(fd,'vendor',this.myData.accomodation_id ).subscribe((response: any) => {
+              this.registrationMessage = response.message;
+              this.toastr.success('Successful', response.message);
+              // this.router.navigate(['/profile']);   
+            });
+          }
+        });
+        // fd.append(`productImagesMulti`, this.accomodationForm.value.productImagesMulti, `${imgId}.jpg`);
+        
+      }
     });
 
     

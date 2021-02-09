@@ -5,7 +5,7 @@ import {environment} from '../../environments/environment';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {AccomodationmodelServer, ServerResponse} from '../models/Accomodation.model';
+import {AccomodationmodelServer, ServerResponse} from '../models/accomodation.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -46,9 +46,9 @@ export class JobService {
     });
   }
  /* This is to fetch all products from the backend server */
-//  getAllProducts() : Observable<ServerResponse> {
-//   return this.http.get<ServerResponse>(this.SERVER_URL + '/job/all-job');
-// }
+ getAllJobs() : Observable<ServerResponse> {
+  return this.http.get<ServerResponse>(this.SERVER_URL + '/job/all-job-view');
+}
 getAllProducts(formData: any): Observable<{ message: string }> {
   const {userID, 
   } = formData;
@@ -56,6 +56,16 @@ getAllProducts(formData: any): Observable<{ message: string }> {
 return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/all-job`, {
   userID
 });
+}
+/*Search Data*/
+
+getAllJobsFilter(formData: any): Observable<{ message: string }> {
+  const {searchData, 
+    } = formData;
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/dataSearch`, {
+    searchData
+  });
 }
 /*Fatch Data*/
 
@@ -101,12 +111,45 @@ deleteData(formData: any): Observable<{ message: string }> {
 
 
 
+/**Apply Jobs */
+applyjob(formData: any): Observable<{ message: string }> {
+  const {
+    job_id, 
+    first_name, 
+    last_name,
+    user_email,
+    cover_letter,
+    user_id,
+   } = formData;
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/apply-job`, {
+    job_id,
+    first_name,
+    last_name,
+    user_email,
+    cover_letter,
+    user_id,
+    
+   
+  });
+}
 
 
+/**Image Data */
+documentData(formData: any,profileID,id): Observable<{ message: string }> {
+ 
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/documents/uploadProductImage/${profileID}/${id}`, formData);
+}
 
-
-
-
+/* This is to fetch all products from the backend server */
+getApplyJobsUser(formData: any) : Observable<{ message: string }> {
+  const {userID, 
+    } = formData;
+    return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/all-job-user-view`, {
+      userID
+    });
+}
 
 
 

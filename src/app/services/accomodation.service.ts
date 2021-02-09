@@ -5,7 +5,7 @@ import {environment} from '../../environments/environment';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {AccomodationmodelServer, ServerResponse} from '../models/Accomodation.model';
+import {AccomodationmodelServer, ServerResponse} from '../models/accomodation.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -41,7 +41,11 @@ export class AccomodationService {
       bedroom,
       bathroom,
       parking_area,
-      floor_area,} = formData;
+      floor_area,
+      furnished,
+      dwelling_type,
+      available
+    } = formData;
     
     return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/accomodation/add-accomodation`, {
       title,
@@ -55,6 +59,9 @@ export class AccomodationService {
       bathroom,
       parking_area,
       floor_area,
+      furnished,
+      dwelling_type,
+      available
      
     });
   }
@@ -62,12 +69,29 @@ export class AccomodationService {
  getAllProducts(formData: any): Observable<{ message: string }> {
     const {userID, 
     } = formData;
-  // return this.http.get<ServerResponse>(this.SERVER_URL + '/accomodation/all-accomodation');
+  
   return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/accomodation/all-accomodation`, {
     userID
   });
 }
 
+getAllAccomodation(numberOfResults= 10) : Observable<ServerResponse> {
+  return this.http.get<ServerResponse>(this.SERVER_URL + '/accomodation/all-accomodation-view', {
+    params: {
+      limit: numberOfResults.toString()
+    }
+  });
+}
+/*Search Data*/
+
+getAllFilter(formData: any): Observable<{ message: string }> {
+  const {searchData, 
+    } = formData;
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/accomodation/dataSearch`, {
+    searchData
+  });
+}
 /*Fatch Data*/
 
 fatchaccomodation(formData: any): Observable<{ message: string }> {
@@ -92,6 +116,9 @@ editaccomodation(formData: any): Observable<{ message: string }> {
     bathroom,
     parking_area,
     floor_area,
+    furnished,
+    dwelling_type,
+    available
     
     } = formData;
   
@@ -107,6 +134,9 @@ editaccomodation(formData: any): Observable<{ message: string }> {
     bathroom,
     parking_area,
     floor_area,
+    furnished,
+    dwelling_type,
+    available
     
    
   });
@@ -123,7 +153,12 @@ deleteaccomodation(formData: any): Observable<{ message: string }> {
   });
 }
 
-
+/**Image Data */
+imageData(formData: any,vendor,id): Observable<{ message: string }> {
+ 
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/images-multi/uploadProductImage/${vendor}/${id}`, formData);
+}
 
 
 }

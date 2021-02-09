@@ -1,0 +1,138 @@
+
+<div class="container ">
+    <a href="/#/jobs"> << Return Job List</a>
+    <p>Job Title :  {{jobData?.job_post_title}}</p>
+    <p>Job Location :  {{jobData?.job_address}}</p>
+    <ng-container *ngIf="registrationMessage?.length > 0">
+      <div class="alert alert-success alert-dismissible">
+        {{registrationMessage}}
+      </div>
+    </ng-container>
+    <ng-container *ngIf="errorMessage?.length > 0">
+        <div class="alert alert-denger alert-dismissible">
+          {{errorMessage}}
+        </div>
+      </ng-container>
+  
+    <form (ngSubmit)="applyJob()" [formGroup]="applyJobForm" class="form-horizontal" novalidate>
+      <div class="row">
+        
+        <div class="col-md-12">
+          <h2>Apply Job</h2>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">First Name</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="first_name" id="first_name"  name="first_name"
+                     placeholder="Title"
+                     required type="text">
+                     <input class="form-control" formControlName="job_id" id="job_id"  name="job_id"
+                     placeholder="Title"
+                     required type="hidden">
+                     
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Last Name</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="last_name" id="last_name"  name="last_name"
+                     placeholder="Title"
+                     required type="text">
+                     <input class="form-control" formControlName="user_id" id="user_id"  name="user_id"
+                     placeholder="Title"
+                     required type="hidden">
+                     
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Email</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="user_email" id="user_email"  name="user_email"
+                     placeholder="Title"
+                     required type="text">
+                     
+                     
+            </div>
+          </div>
+        </div>
+        
+      </div>
+     
+
+      
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Please write your cover letter below</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              
+                     <textarea class="form-control" formControlName="cover_letter" id="cover_letter"  name="cover_letter"
+                     placeholder="Property Description"
+                     required></textarea>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Your CV</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              
+              <input class="form-control" (change)="onFileSelect($event)"  id="productdoc" name="productdoc"
+                 
+              required type="file"  placeholder="" readonly>
+             <p> We accept Word, PDF and Richtext formats (Max 6MB)</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      
+      
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <button [disabled]="(applyJobForm.invalid || applyJobForm.pending) && applyJobForm.touched "
+                  class="btn btn-success" type="submit">
+            <i class="fa fa-user-plus"></i> Apply Job
+          </button>
+        </div>
+      </div>
+
+      
+      
+    </form>
+  </div>
+  

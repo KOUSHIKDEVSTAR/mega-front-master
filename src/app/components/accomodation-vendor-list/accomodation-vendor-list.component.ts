@@ -4,7 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatTableDataSource} from '@angular/material/table';
 import { AccomodationService } from '@app/services/accomodation.service';
-import {AccomodationmodelServer, ServerResponse} from '../../models/Accomodation.model';
+import {AccomodationmodelServer, ServerResponse} from '../../models/accomodation.model';
 import Swal from 'sweetalert2';
 
 // export interface PeriodicElement {
@@ -152,7 +152,9 @@ onclickDelete(id){
 // }
 
 
-  onclickEdit(id){    
+  onclickEdit(id){  
+    console.log(id);
+      
     this.router.navigate(['/vendor-accomodation-edit/', id]);   
   }
 

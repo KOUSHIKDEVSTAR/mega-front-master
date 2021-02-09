@@ -5,7 +5,8 @@ import {ResponseModel, UserService} from '../../services/user.service';
 import {map} from 'rxjs/operators';
 import {AuthService, SocialUser} from 'angularx-social-login';
 import { AccomodationService } from '@app/services/accomodation.service';
-
+import { v4 as uuidv4 } from 'uuid';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-accomodation-add',
@@ -19,6 +20,7 @@ export class AccomodationAddComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private checkEmailService: CheckEmailService,
     private userService: UserService,
+    private toastr: ToastrService,
     private accomodationService: AccomodationService) {
 
 this.accomodationForm = fb.group({
@@ -33,6 +35,10 @@ this.accomodationForm = fb.group({
   bathroom:['',[Validators.required]],
   parking_area:['',[Validators.required]],
   floor_area:['',[Validators.required]],
+  furnished:['',[Validators.required]],
+  dwelling_type:['',[Validators.required]],
+  available:['',[Validators.required]],
+  productImagesMulti:['',[Validators.required]],
 });
 }
 get formControls() {
@@ -40,6 +46,13 @@ get formControls() {
 }
 
   ngOnInit(): void {
+    this.accomodationForm.patchValue({
+     
+      accomodation_type: ' ',
+      furnished: ' ',
+      
+    })
+
     this.userService.userData$
     
       .subscribe((data: any) => {
@@ -60,11 +73,20 @@ get formControls() {
         author:userID
       })
   }
-
+  onFileSelect(event) {
+    
+    
+    if (event.target.files.length > 0) {
+      const file = event.target.files;
+      console.log('FILE UP  :', file);
+      
+      this.accomodationForm.get('productImagesMulti').setValue(file);
+    }
+  }
   registerAccomodation() {
 
     if (this.accomodationForm.invalid) {
-      console.log('In val form ');
+      // console.log('In val form ');
       
       return;
     }
@@ -76,9 +98,34 @@ get formControls() {
     // @ts-ignore
     this.accomodationService.registeraccomodation(bodydata).subscribe((response: any) => {
       this.registrationMessage = response.message;
+
+      if(response.message != ''){
+
+        var fd = new FormData();
+        let lastId = response.lastId;
+        console.log('FILE DATA :', Array.from(this.accomodationForm.value.productImagesMulti));
+        let fileArr = Array.from(this.accomodationForm.value.productImagesMulti);
+
+        fileArr.forEach((file: any, index)=>{
+          let imgId = uuidv4();
+          fd.append(`productImagesMulti`, file, `${imgId}.jpg`);
+
+          if(index+1 == this.accomodationForm.value.productImagesMulti.length){
+            this.accomodationService.imageData(fd,'vendor-add',lastId ).subscribe((response: any) => {
+              this.registrationMessage = response.message;
+              this.toastr.success('Successful', response.message);
+              // this.router.navigate(['/profile']);
+              this.accomodationForm.reset();   
+            });
+          }
+        });
+        // fd.append(`productImagesMulti`, this.accomodationForm.value.productImagesMulti, `${imgId}.jpg`);
+        
+      }
+
     });
 
-    this.accomodationForm.reset();
+    
 
     
   }

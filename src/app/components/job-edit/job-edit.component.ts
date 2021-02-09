@@ -48,13 +48,7 @@ export class JobEditComponent implements OnInit {
         job_post_title: this.myData.job_post_title,
         job_post_content: this.myData.job_post_content,
         job_address: this.myData.job_address,
-        // accomodation_type: this.myData.accomodation_type,
-        // bedroom: this.myData.bedroom,
-        // bathroom: this.myData.bathroom,
-        // parking_area: this.myData.parking_area,
-        // floor_area: this.myData.floor_area,
-        // address: this.myData.address,
-        // post_short_content: this.myData.post_short_content,
+        
       })
 
       

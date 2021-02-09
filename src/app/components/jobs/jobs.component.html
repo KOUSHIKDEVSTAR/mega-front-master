@@ -1,1 +1,44 @@
-<p>jobs works!</p>
+
+<div class="container ">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Jobs</h2>
+    </div>
+    <div class="col-md-2">
+      <div>
+        Search
+        <input type="text" id="search" [(ngModel)]="searchTerm" (keyup)='onChangeSearchTerm($event.target.value)'>
+      </div>
+    </div>
+    <div class="col-md-10">
+    
+      <div class="row">
+        
+        
+        <div class="col-md-4 col-sm-6" *ngFor="let jobs of jobsPost; let i = index">
+          <div class="card my-2" (click)="selectProduct(jobs.job_post_id )">
+            <img [src]="(jobs.job_thumbnail && jobs.job_thumbnail) ? BASE_URL+'/'+jobs.job_thumbnail : ''" alt="{{jobs.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProduct(jobs.accomodation_id)">
+            <div class="card-header">
+              <div class="card-title">
+                <p>{{jobs.job_post_title | titlecase}}</p>
+              </div> 
+            </div>
+            <div class="card-body">
+              <h6>{{jobs.job_post_content.substr(0, 100)}} ...</h6>
+              
+            </div>
+
+            <div class="row d-flex justify-content-center border-primary my-3">
+              <div class="col-md-6">
+                
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>
+

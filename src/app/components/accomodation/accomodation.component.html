@@ -1,1 +1,43 @@
-<p>accomodation works!</p>
+<div class="container ">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Accomodation</h2>
+    </div>
+    <div class="col-md-2">
+      <div>
+        Search
+        <input type="text" id="search" [(ngModel)]="searchTerm" (keyup)='onChangeSearchTerm($event.target.value)'>
+      </div>
+    </div>
+    <div class="col-md-10">
+    
+      <div class="row">
+        
+        
+        <div class="col-md-4 col-sm-6" *ngFor="let accomo of accomodation; let i = index">
+          <div class="card my-2" (click)="selectProduct(accomo.accomodation_id)">
+            <img [src]="(accomo.accomodation_post_images && accomo.accomodation_post_images[0]) ? BASE_URL+'/'+accomo.accomodation_post_images[0] : ''" alt="{{accomo.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProduct(accomo.accomodation_id)">
+            <div class="card-header">
+              <div class="card-title">
+                <p>{{accomo.title | titlecase}}</p>
+              </div> 
+            </div>
+            <div class="card-body">
+              <h6>{{accomo.post_content.substr(0, 50)}} ...</h6>
+              <p class="lead">{{accomo.price | currency:'USD'}}</p>
+            </div>
+
+            <div class="row d-flex justify-content-center border-primary my-3">
+              <div class="col-md-6">
+                
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>
+

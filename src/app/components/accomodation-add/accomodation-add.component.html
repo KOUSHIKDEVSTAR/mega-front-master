@@ -96,10 +96,11 @@
                      <select class="form-control" formControlName="accomodation_type" id="accomodation_type" name="accomodation_type"
                    
                      required>
-                      <option value="1">House</option>
-                      <option value="2">Room</option>
-                      <option value="3">Flats</option>
-                      <option value="4">Villa</option>
+                     <option value=" ">Select Accomodation type</option>
+                      <option value="House">House</option>
+                      <option value="Room">Room</option>
+                      <option value="Flats">Flats</option>
+                      <option value="Villa">Villa</option>
                     </select>
             </div>
           </div>
@@ -173,6 +174,77 @@
               <input class="form-control" formControlName="accomodation_price" id="accomodation_price" name="accomodation_price"
                      placeholder="$13,319 / month*"
                      required type="text">
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="email"> Images Gallery</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+              <input class="form-control" (change)="onFileSelect($event)"  id="productImagesMulti" name="productImagesMulti"
+                     required type="file" multiple>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Accomodation type</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              
+                     <select class="form-control" formControlName="furnished" id="furnished" name="furnished"
+                   
+                     required>
+                     <option value=" ">Select Furnished</option>
+                      <option value="Furnished">Furnished</option>
+                      <option value="Semi Furnished">Semi Furnished</option>
+                      <option value="Not Furnished">Not Furnished</option>
+                      
+                    </select>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Dwelling type</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="dwelling_type" id="dwelling_type" name="dwelling_type"
+                     placeholder="Dwelling type"
+                     required type="text">
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Available</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="available" id="available" name="available"
+                     placeholder="Available*"
+                     required type="date">
             </div>
           </div>
         </div>

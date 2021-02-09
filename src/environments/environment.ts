@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   SERVER_URL : 'http://localhost:9000/api',
   SERVER_URL_NEW : 'http://localhost:3636/api',
+  BASE_URL:'http://localhost:9000/images'
 };
 
 /*
