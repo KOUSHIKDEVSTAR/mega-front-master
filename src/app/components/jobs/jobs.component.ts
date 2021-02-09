@@ -14,7 +14,7 @@ export class JobsComponent implements OnInit {
   products: any;
   jobsPost:any;
   BASE_URL: any = environment.BASE_URL;
- 
+  searchTerm: any = ''; 
 
   constructor(
     private jobService: JobService,
