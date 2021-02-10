@@ -34,6 +34,9 @@ export class JobService {
       job_post_content, 
       author,
       job_address,
+      job_type,
+      job_level,
+      closes_date
      } = formData;
     
     return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/add-job`, {
@@ -41,6 +44,9 @@ export class JobService {
       job_post_content,
       author,
       job_address,
+      job_type,
+      job_level,
+      closes_date
       
      
     });
@@ -133,15 +139,6 @@ applyjob(formData: any): Observable<{ message: string }> {
    
   });
 }
-
-
-/**Image Data */
-documentData(formData: any,profileID,id): Observable<{ message: string }> {
- 
-  
-  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/documents/uploadProductImage/${profileID}/${id}`, formData);
-}
-
 /* This is to fetch all products from the backend server */
 getApplyJobsUser(formData: any) : Observable<{ message: string }> {
   const {userID, 
@@ -151,9 +148,19 @@ getApplyJobsUser(formData: any) : Observable<{ message: string }> {
     });
 }
 
+/**Image Data */
+imageData(formData: any,job,id): Observable<{ message: string }> {
+ 
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/images/uploadProductImage/${job}/${id}`, formData);
+}
 
-
-
+/**Image Data */
+documentData(formData: any,profileID,id): Observable<{ message: string }> {
+ 
+  
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/documents/uploadProductImage/${profileID}/${id}`, formData);
+}
 
 
 

@@ -69,8 +69,115 @@
         </div>
         
       </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="lname">Job Type</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+              
+                     <select class="form-control"  formControlName="job_type" name="job_type" id="job_type" required>
+                      <option value=" " >Select A Job Type</option>
+                      <option value="Full Time">Full Time</option>
+                      <option value="Part Time">Part Time</option>
+                      <option value="Hourly">Hourly</option>
+                      
+                    </select>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+                          <span class="text-danger align-middle">
+                              <!-- Put name validation error messages here -->
+                          </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="lname">Job Level</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+              
+                     <select class="form-control"  formControlName="job_level" name="job_level" id="job_level" required>
+                      <option value=" " >Select A Job Lavel</option>
+                      <option value="Experienced">Experienced</option>
+                      <option value="Freshers">Freshers</option>
+                     
+                      
+                    </select>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+                          <span class="text-danger align-middle">
+                              <!-- Put name validation error messages here -->
+                          </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Closes date</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="closes_date" id="closes_date" name="closes_date"
+                     placeholder="Closes date"
+                     required type="date">
+                     
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Salary details</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="salary_details" id="salary_details" name="salary_details"
+                     placeholder="salary details"
+                     required type="text">
+                     
+            </div>
+          </div>
+        </div>
+        
+      </div>
       
-      
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="email">Job Image</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+              <input class="form-control" (change)="onFileSelect($event)"  id="productImages" name="productImages"
+                     
+                     required type="file" readonly>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-9">
