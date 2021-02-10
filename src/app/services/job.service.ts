@@ -5,7 +5,7 @@ import {environment} from '../../environments/environment';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {AccomodationmodelServer, ServerResponse} from '../models/accomodation.model';
+// import {AccomodationmodelServer, ServerResponse} from '../models/accomodation.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -52,8 +52,8 @@ export class JobService {
     });
   }
  /* This is to fetch all products from the backend server */
- getAllJobs() : Observable<ServerResponse> {
-  return this.http.get<ServerResponse>(this.SERVER_URL + '/job/all-job-view');
+ getAllJobs() : Observable<any> {
+  return this.http.get<any>(this.SERVER_URL + '/job/all-job-view');
 }
 getAllProducts(formData: any): Observable<{ message: string }> {
   const {userID, 

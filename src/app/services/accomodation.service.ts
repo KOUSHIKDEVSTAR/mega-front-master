@@ -5,7 +5,8 @@ import {environment} from '../../environments/environment';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {AccomodationmodelServer, ServerResponse} from '../models/accomodation.model';
+// import {AccomodationmodelServer, ServerResponse} from '../models/accomodation.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -75,8 +76,8 @@ export class AccomodationService {
   });
 }
 
-getAllAccomodation(numberOfResults= 10) : Observable<ServerResponse> {
-  return this.http.get<ServerResponse>(this.SERVER_URL + '/accomodation/all-accomodation-view', {
+getAllAccomodation(numberOfResults= 10) : Observable<any> {
+  return this.http.get<any>(this.SERVER_URL + '/accomodation/all-accomodation-view', {
     params: {
       limit: numberOfResults.toString()
     }

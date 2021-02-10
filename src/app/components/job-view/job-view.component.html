@@ -9,7 +9,7 @@
             <li><a href="#">Home</a></li>
            
             
-            <li class="active">{{myData.job_post_title}}</li>
+            <li class="active">{{myData?.job_post_title}}</li>
           </ul>
         </div>
       </div>
@@ -38,14 +38,14 @@
         <!-- Product details -->
         <div class="col-md-5">
           <div class="product-details">
-            <h2 >{{myData.job_post_title}}</h2>
+            <h2 >{{myData?.job_post_title}}</h2>
             
             Job details:-
             <p>
-              {{myData.job_post_content}}
+              {{myData?.job_post_content}}
             </p>
   
-            <button mat-button (click)="onclickApply(myData.job_id)" color="accent">Apply Job</button>
+            <button mat-button (click)="onclickApply(myData?.job_id)" color="accent">Apply Job</button>
   
             
   

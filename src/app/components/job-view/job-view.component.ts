@@ -24,7 +24,7 @@ export class JobViewComponent implements OnInit {
     let serverData = this.route.snapshot.paramMap.get('id');
    
      let bodydata = { job_post_id: serverData}; 
-    console.log(bodydata);
+    
     this.jobService.fatchData(bodydata).subscribe((response: any) => {
       
       this.myData = response.data[0];

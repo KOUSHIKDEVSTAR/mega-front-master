@@ -25,6 +25,7 @@
     "@angular/router": "~9.0.6",
     "@sweetalert2/ngx-sweetalert2": "^9.0.0",
     "angularx-social-login": "^2.2.1",
+    "ng-image-slider": "^2.6.4",
     "ngx-spinner": "^9.0.1",
     "ngx-toastr": "^12.1.0",
     "rxjs": "~6.5.4",

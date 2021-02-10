@@ -53,6 +53,7 @@ import { ApplyJobListComponent } from './components/apply-job-list/apply-job-lis
 import { ApplyJobViewComponent } from './components/apply-job-view/apply-job-view.component';
 import { AccomodationViewComponent } from './components/accomodation-view/accomodation-view.component';
 import { JobViewComponent } from './components/job-view/job-view.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 const config = new AuthServiceConfig([
@@ -114,6 +115,7 @@ export function provideConfig() {
     MatSelectCountryModule.forRoot('de'),
     MatFormFieldModule,
     MatInputModule,
+    NgImageSliderModule,
     NoopAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

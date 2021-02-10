@@ -9,7 +9,7 @@
             <li><a href="#">Home</a></li>
            
             
-            <li class="active">{{myData.title}}</li>
+            <li class="active">{{myData?.title}}</li>
           </ul>
         </div>
       </div>
@@ -29,20 +29,21 @@
         
   
         <!-- Product thumb imgs -->
-        <div class="col-md-2  col-md-pull-5">
+        <div class="col-md-6  col-md-pull-5">
           
-  
+          <ng-image-slider [images]="imageObject" imageSize='{width: 300, height: 300, space: 3}' #nav></ng-image-slider>
         </div>
         <!-- /Product thumb imgs -->
   
         <!-- Product details -->
-        <div class="col-md-5">
+        <div class="col-md-6">
+
           <div class="product-details">
-            <h2 >{{myData.title}}</h2>
+            <h2 >{{myData?.title}}</h2>
             
             
             <p>
-              {{myData.post_content}}
+              {{myData?.post_content}}
             </p>
   
            
