@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {AccomodationmodelServer} from '../../models/accomodation.model';
+// import {AccomodationmodelServer} from '../../models/accomodation.model';
 import {environment} from '../../../environments/environment';
 import { AccomodationService } from '@app/services/accomodation.service';
 
@@ -13,7 +13,7 @@ import { AccomodationService } from '@app/services/accomodation.service';
 export class AccomodationComponent implements OnInit {
   searchTerm: any = ''; 
   BASE_URL: any = environment.BASE_URL;
-  accomodation: AccomodationmodelServer[] = [];
+  accomodation: any
   constructor(
     
               private router: Router,

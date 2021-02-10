@@ -5,7 +5,7 @@ import {environment} from '../../../environments/environment';
 import {ProductModelServer, ServerResponse} from '../../models/product.model';
 import {CartService} from '../../services/cart.service';
 import { AccomodationService } from '@app/services/accomodation.service';
-import {AccomodationmodelServer} from '../../models/accomodation.model';
+// import {AccomodationmodelServer} from '../../models/accomodation.model';
 import { JobService } from '@app/services/job.service';
 
 
@@ -17,7 +17,7 @@ import { JobService } from '@app/services/job.service';
 })
 export class HomeComponent implements OnInit {
   BASE_URL: any = environment.BASE_URL;
-  accomodation: AccomodationmodelServer[] = [];
+  accomodation: any;
   products: ProductModelServer[] = [];
   jobsPost:any;
 
