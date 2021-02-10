@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class JobService {
+export class FoodService {
   auth = true;
   private SERVER_URL = environment.SERVER_URL;
   private job;
@@ -20,8 +20,8 @@ export class JobService {
   
 
   constructor(
-    private http: HttpClient,
-    private authService: AuthService,
+              private http: HttpClient,
+              private authService: AuthService,
               private httpClient: HttpClient,
               private router: Router) {
 
@@ -29,82 +29,84 @@ export class JobService {
   }
 
 
-  registerjob(formData: any): Observable<{ message: string }> {
-    const {job_post_title, 
-      job_post_content, 
-      author,
-      job_address,
-      job_type,
-      job_level,
+  registerfood(formData: any): Observable<{ message: string }> {
+    const {author, 
+      title, 
+      description,
+      food_contract,
+      restaurants_name,
+      discount,
       closes_date,
-      job_category,
-      salary,
-      salary_details,
+      discount_code,
      } = formData;
     
-    return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/add-job`, {
-      job_post_title,
-      job_post_content,
+    return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/food/add-food`, {
       author,
-      job_address,
-      job_type,
-      job_level,
+      title,
+      description,
+      food_contract,
+      restaurants_name,
+      discount,
       closes_date,
-      job_category,
-      salary,
-      salary_details,
-      
-     
+      discount_code,
     });
   }
  /* This is to fetch all products from the backend server */
- getAllJobs() : Observable<any> {
-  return this.http.get<any>(this.SERVER_URL + '/job/all-job-view');
+ getAllfood() : Observable<any> {
+  return this.http.get<any>(this.SERVER_URL + '/food/all-job-view');
 }
 getAllProducts(formData: any): Observable<{ message: string }> {
   const {userID, 
   } = formData;
 // return this.http.get<ServerResponse>(this.SERVER_URL + '/accomodation/all-accomodation');
-return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/all-job`, {
+return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/food/all-food`, {
   userID
 });
 }
 /*Search Data*/
 
-getAllJobsFilter(formData: any): Observable<{ message: string }> {
+getAllfoodFilter(formData: any): Observable<{ message: string }> {
   const {searchData, 
     } = formData;
   
-  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/dataSearch`, {
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/food/dataSearch`, {
     searchData
   });
 }
 /*Fatch Data*/
 
 fatchData(formData: any): Observable<{ message: string }> {
-  const {job_post_id, 
+  const {food_post_id , 
     } = formData;
   
-  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/dataView`, {
-    job_post_id
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/food/dataView`, {
+    food_post_id 
   });
 }
 /**Edit Data */
 editData(formData: any): Observable<{ message: string }> {
   const {
-    job_post_id,
-    job_post_title, 
-    job_post_content, 
-    job_address,
+    food_post_id,
+    title, 
+    description,
+    food_contract,
+    restaurants_name,
+    discount,
+    closes_date,
+    discount_code,
     
     
     } = formData;
   
-  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/dataEdit`, {
-    job_post_id,
-    job_post_title,
-    job_post_content,
-    job_address,
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/food/dataEdit`, {
+    food_post_id,
+    title, 
+    description,
+    food_contract,
+    restaurants_name,
+    discount,
+    closes_date,
+    discount_code,
    
     
    
@@ -113,11 +115,11 @@ editData(formData: any): Observable<{ message: string }> {
 /*Dalete Data*/
 
 deleteData(formData: any): Observable<{ message: string }> {
-  const {job_post_id, 
+  const {food_post_id, 
     } = formData;
   
-  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/dataDelete`, {
-    job_post_id
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/food/dataDelete`, {
+    food_post_id
   });
 }
 
@@ -134,7 +136,7 @@ applyjob(formData: any): Observable<{ message: string }> {
     user_id,
    } = formData;
   
-  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/apply-job`, {
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/food/apply-job`, {
     job_id,
     first_name,
     last_name,
@@ -149,24 +151,19 @@ applyjob(formData: any): Observable<{ message: string }> {
 getApplyJobsUser(formData: any) : Observable<{ message: string }> {
   const {userID, 
     } = formData;
-    return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/all-job-user-view`, {
+    return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/food/all-job-user-view`, {
       userID
     });
 }
 
 /**Image Data */
-imageData(formData: any,job,id): Observable<{ message: string }> {
+imageData(formData: any,food,id): Observable<{ message: string }> {
  
   
-  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/images/uploadProductImage/${job}/${id}`, formData);
+  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/images/uploadProductImage/${food}/${id}`, formData);
 }
 
-/**Image Data */
-documentData(formData: any,profileID,id): Observable<{ message: string }> {
- 
-  
-  return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/documents/uploadProductImage/${profileID}/${id}`, formData);
-}
+
 
 
 

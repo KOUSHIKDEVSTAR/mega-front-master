@@ -31,42 +31,37 @@
         <!-- Product thumb imgs -->
         <div class="col-md-12  col-md-pull-5">
           
-          <img [src]="(myData?.job_thumbnail) ? BASE_URL+'/'+myData?.job_thumbnail : ''" alt="{{myData?.job_post_title}}" class="card-img-top" style="cursor: pointer;">
+          <img [src]="(myData?.image) ? BASE_URL+'/'+myData?.image : ''" alt="{{myData?.title}}" class="card-img-top" style="cursor: pointer;">
         </div>
         <!-- /Product thumb imgs -->
   
         <!-- Product details -->
         <div class="col-md-12">
           <div class="product-details">
-            <h1 >{{myData?.job_post_title}}</h1>
+            <h1 >{{myData?.title}}</h1>
             <div class="row">
               <div class="col-md-6">
                 <ul>
-                  <li>Language:English</li>
-                  <li>Job level: {{myData?.job_level}}</li>
-                  <li>Hours: {{myData?.job_type}}</li>
-                  <li>Posted: {{myData?.created_at.substring(0, 10)}}</li>
-                  
+                  <li>At :{{myData?.restaurants_name}}</li>
+
                 </ul>
               </div>
-              <div class="col-md-6">
-                <ul>
-                  <li>Salary:{{myData?.salary_details}}</li>
-                  <li>Closes:{{myData?.closes_date}}</li>
-                  <li>Catagory:{{myData?.job_category}}</li>
-                  
-                  
-                </ul>
-              </div>
+              
             </div>
-            
-            <h3>Job details:-</h3>
+            <hr>
+            <h3>Food details:-</h3>
             <p>
-              {{myData?.job_post_content}}
+              {{myData?.description}}
             </p>
-           
-            <button mat-button (click)="onclickApply(myData?.job_post_id)" color="accent" *ngIf="userRole == '555' || userRole == null">Apply Job</button>
-            <button mat-button (click)="onclickEdit(myData?.job_post_id)" color="accent" *ngIf="userRole == '666'">Edit Job</button>
+            <hr>
+            <h3>About this student discount:-</h3>
+            <p>
+              {{myData?.food_contract}}
+            </p>
+           <hr>
+
+            <button mat-button (click)="onclickApply(myData?.food_post_id)" color="accent" *ngIf="userRole == '555' || userRole == null">Apply Food</button>
+            <button mat-button (click)="onclickEdit(myData?.food_post_id)" color="accent" *ngIf="userRole == '666'">Edit Job</button>
   
             
   

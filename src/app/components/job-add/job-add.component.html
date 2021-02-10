@@ -4,6 +4,11 @@
         {{registrationMessage}}
       </div>
     </ng-container>
+    <ng-container *ngIf="errorMessage?.length > 0">
+      <div class="alert alert-success alert-dismissible">
+        {{errorMessage}}
+      </div>
+    </ng-container>
   
     <form (ngSubmit)="registerJob()" [formGroup]="jobForm" class="form-horizontal" novalidate>
       <div class="row">
@@ -76,7 +81,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-              <div class="input-group-prepend" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
               
                      <select class="form-control"  formControlName="job_type" name="job_type" id="job_type" required>
                       <option value=" " >Select A Job Type</option>
@@ -99,12 +104,41 @@
       </div>
       <div class="row">
         <div class="col-md-3 field-label-responsive">
+          <label for="lname">Job Category</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              
+                     <select class="form-control"  formControlName="job_category" name="job_category" id="job_category" required>
+                      <option value=" " >Select A Job Category</option>
+                      <option value="Housekeeping & Cleaning">Housekeeping & Cleaning</option>
+                      <option value="Construction & Property">Construction & Property</option>
+                      <option value="Marketing, Advertising & PR">Marketing, Advertising & PR</option>
+                     
+                      
+                    </select>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+                          <span class="text-danger align-middle">
+                              <!-- Put name validation error messages here -->
+                          </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
           <label for="lname">Job Level</label>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-              <div class="input-group-prepend" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
               
                      <select class="form-control"  formControlName="job_level" name="job_level" id="job_level" required>
                       <option value=" " >Select A Job Lavel</option>
@@ -160,15 +194,32 @@
         </div>
         
       </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Salary</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="salary" id="salary" name="salary"
+                     placeholder="salary"
+                     required type="text">
+                     
+            </div>
+          </div>
+        </div>
+        
+      </div>
       
       <div class="row">
         <div class="col-md-3 field-label-responsive">
-          <label for="email">Job Image</label>
+          <label for="email">Job Thumbnail Image</label>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-              <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+              <div class="input-group-addon" style="width: 2.6rem"></div>
               <input class="form-control" (change)="onFileSelect($event)"  id="productImages" name="productImages"
                      
                      required type="file" readonly>

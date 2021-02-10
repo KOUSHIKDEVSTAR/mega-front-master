@@ -1,1 +1,45 @@
-<p>food works!</p>
+
+<div class="container ">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>food</h2>
+      </div>
+      <div class="col-md-2">
+        <div>
+          Search
+          <input type="text" id="search" [(ngModel)]="searchTerm" (keyup)='onChangeSearchTerm($event.target.value)'>
+        </div>
+      </div>
+      <div class="col-md-10">
+      
+        <div class="row">
+          
+          
+          <div class="col-md-12 col-sm-6 pointer" *ngFor="let food of foodPost; let i = index" (click)="selectProduct(food.food_post_id  )">
+            <div class="card my-2" (click)="selectProduct(food.food_post_id  )">
+              <img [src]="(food.image) ? BASE_URL+'/'+food.image : ''" alt="{{food.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProduct(food.food_post_id )">
+              <div class="card-header">
+                <div class="card-title">
+                  <p (click)="selectProduct(food.food_post_id  )">{{food.title | titlecase}}</p>
+                </div> 
+              </div>
+              <div class="card-body">
+                <h6>{{food.description.substr(0, 100)}} ...</h6>
+                
+              </div>
+  
+              <div class="row d-flex justify-content-center border-primary my-3">
+                <div class="col-md-6">
+                  
+                </div>
+              </div>
+  
+  
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  
+  

@@ -58,7 +58,7 @@ export class AccomodationEditComponent implements OnInit {
     this.accomodationService.fatchaccomodation(bodydata).subscribe((response: any) => {
       // this.registrationMessage = response.message;
       this.myData = response.data[0];
-      console.log('VIEW  ',this.myData);
+      // console.log('VIEW  ',this.myData);
       this.accomodationForm.patchValue({
         accomodation_id: this.myData.accomodation_id,
         title: this.myData.title,
@@ -86,7 +86,7 @@ export class AccomodationEditComponent implements OnInit {
     
     if (event.target.files.length > 0) {
       const file = event.target.files;
-      console.log('FILE UP  :', file);
+      // console.log('FILE UP  :', file);
       
       this.accomodationForm.get('productImagesMulti').setValue(file);
     }

@@ -13,6 +13,7 @@ export class JobEditComponent implements OnInit {
   myData: any;
   jobForm: FormGroup;
   registrationMessage: string;
+  errorMessage: string;
   constructor(
     private fb: FormBuilder,
     
@@ -24,7 +25,14 @@ export class JobEditComponent implements OnInit {
       job_post_title: ['', [Validators.required]],
       job_post_content: ['', [Validators.required]],
       job_address:['',[Validators.required]],
+      job_type:['',[Validators.required]],
+      job_level:['',[Validators.required]],
+      closes_date:['',[Validators.required]],
+      salary_details:['',[Validators.required]],
+      job_category:['',[Validators.required]],
+      salary:['',[Validators.required]],
       
+      // productImages:[''],
     });
 
   }
@@ -42,12 +50,19 @@ export class JobEditComponent implements OnInit {
     this.jobService.fatchData(bodydata).subscribe((response: any) => {
       // this.registrationMessage = response.message;
       this.myData = response.data[0];
-      console.log('VIEW  ',this.myData);
+      // console.log('VIEW  ',this.myData);
      this.jobForm.patchValue({
         job_post_id: this.myData.job_post_id,
         job_post_title: this.myData.job_post_title,
         job_post_content: this.myData.job_post_content,
         job_address: this.myData.job_address,
+
+        job_type:this.myData.job_type,
+      job_level:this.myData.job_level,
+      closes_date:this.myData.closes_date,
+      salary_details:this.myData.salary_details,
+      job_category:this.myData.job_category,
+      salary:this.myData.salary,
         
       })
 
@@ -59,7 +74,7 @@ export class JobEditComponent implements OnInit {
 
     if (this.jobForm.invalid) {
       // console.log('In val form ');
-      
+      this.errorMessage = 'Some Missing';
       return;
     }
 

@@ -54,7 +54,8 @@ import { ApplyJobViewComponent } from './components/apply-job-view/apply-job-vie
 import { AccomodationViewComponent } from './components/accomodation-view/accomodation-view.component';
 import { JobViewComponent } from './components/job-view/job-view.component';
 import { NgImageSliderModule } from 'ng-image-slider';
-
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { FoodViewComponent } from './components/food-view/food-view.component';
 
 const config = new AuthServiceConfig([
   {
@@ -105,7 +106,8 @@ export function provideConfig() {
     ApplyJobListComponent,
     ApplyJobViewComponent,
     AccomodationViewComponent,
-    JobViewComponent
+    JobViewComponent,
+    FoodViewComponent
   ],
   imports: [
     BrowserModule,
@@ -116,6 +118,7 @@ export function provideConfig() {
     MatFormFieldModule,
     MatInputModule,
     NgImageSliderModule,
+    IvyCarouselModule,
     NoopAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

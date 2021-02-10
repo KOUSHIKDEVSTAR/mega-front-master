@@ -153,7 +153,7 @@ onclickDelete(id){
 
 
   onclickEdit(id){  
-    console.log(id);
+    // console.log(id);
       
     this.router.navigate(['/vendor-accomodation-edit/', id]);   
   }

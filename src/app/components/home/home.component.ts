@@ -5,6 +5,7 @@ import {environment} from '../../../environments/environment';
 import {ProductModelServer, ServerResponse} from '../../models/product.model';
 import {CartService} from '../../services/cart.service';
 import { AccomodationService } from '@app/services/accomodation.service';
+import { FoodService } from '@app/services/food.service';
 // import {AccomodationmodelServer} from '../../models/accomodation.model';
 import { JobService } from '@app/services/job.service';
 
@@ -20,13 +21,16 @@ export class HomeComponent implements OnInit {
   accomodation: any;
   products: ProductModelServer[] = [];
   jobsPost:any;
+  foodPost:any;
 
 
-  constructor(private productService: ProductService,
+  constructor(
+              private productService: ProductService,
               private cartService: CartService,
               private router: Router,
               private accomodationService:AccomodationService,
-              private jobService:JobService
+              private jobService:JobService,
+              private foodService:FoodService
               ) { }
 
   ngOnInit(): void {
@@ -42,11 +46,20 @@ export class HomeComponent implements OnInit {
       this.jobService.getAllJobs().subscribe((prods: any) => {
         this.jobsPost = prods.data;     
       });
+      this.foodService.getAllfood().subscribe((prods: any) => {
+        this.foodPost = prods.data;     
+      });
     });
   }
 
-  selectProduct(id: number) {
-    this.router.navigate(['/product', id]).then();
+  selectProductJob(id) {
+    this.router.navigate(['/jobs-view/', id]).then();
+  }
+  selectProductAcco(id) {
+    this.router.navigate(['/accomodations-view/', id]).then();
+  }
+  selectProductFood(id) {
+    this.router.navigate(['/food-view/', id]).then();
   }
 
   AddToCart(id: number) {

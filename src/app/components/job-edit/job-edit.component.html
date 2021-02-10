@@ -1,89 +1,243 @@
 <div class="container ">
-    <ng-container *ngIf="registrationMessage?.length > 0">
-      <div class="alert alert-success alert-dismissible">
-        {{registrationMessage}}
-      </div>
-    </ng-container>
-  
-    <form (ngSubmit)="editData()" [formGroup]="jobForm" class="form-horizontal" novalidate>
-      <div class="row">
-        
-        <div class="col-md-12">
-          <h2>Edit Job</h2>
-          <hr>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3 field-label-responsive">
-          <label for="fname">Title</label>
-        </div>
-        <div class="col-md-9">
-          <div class="form-group">
-            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-              <div class="input-group-prepend" style="width: 2.6rem"></div>
-              <input class="form-control" formControlName="job_post_title" id="job_post_title"  name="job_post_title"
-                     placeholder="Title"
-                     required type="text">
-                     <input class="form-control" formControlName="job_post_id" id="job_post_id"  name="job_post_id"
-                     placeholder="Title"
-                     required type="hidden">
-                     
-            </div>
-          </div>
-        </div>
-        
-      </div>
-     
+  <ng-container *ngIf="registrationMessage?.length > 0">
+    <div class="alert alert-success alert-dismissible">
+      {{registrationMessage}}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="errorMessage?.length > 0">
+    <div class="alert alert-success alert-dismissible">
+      {{errorMessage}}
+    </div>
+  </ng-container>
 
+  <form (ngSubmit)="editData()" [formGroup]="jobForm" class="form-horizontal" novalidate>
+    <div class="row">
       
-      <div class="row">
-        <div class="col-md-3 field-label-responsive">
-          <label for="fname">Property Description</label>
-        </div>
-        <div class="col-md-9">
-          <div class="form-group">
-            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-              <div class="input-group-prepend" style="width: 2.6rem"></div>
-              
-                     <textarea class="form-control" formControlName="job_post_content" id="job_post_content"  name="job_post_content"
-                     placeholder="Property Description"
-                     required></textarea>
-            </div>
+      <div class="col-md-12">
+        <h2>Edit Job</h2>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+        <label for="fname">Title</label>
+      </div>
+      <div class="col-md-9">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-prepend" style="width: 2.6rem"></div>
+            <input class="form-control" formControlName="job_post_title" id="job_post_title" name="job_post_title"
+                   placeholder="Title"
+                   required type="text">
+                   
           </div>
         </div>
-        
-      </div>
-      <div class="row">
-        <div class="col-md-3 field-label-responsive">
-          <label for="fname">Job Location</label>
-        </div>
-        <div class="col-md-9">
-          <div class="form-group">
-            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-              <div class="input-group-prepend" style="width: 2.6rem"></div>
-              
-                     <textarea class="form-control" formControlName="job_address"  id="job_address" name="job_address"
-                     placeholder="Job Location"
-                     required></textarea>
-            </div>
-          </div>
-        </div>
-        
       </div>
       
-      
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <button [disabled]="(jobForm.invalid || jobForm.pending) && jobForm.touched "
-                  class="btn btn-success" type="submit">
-            <i class="fa fa-user-plus"></i> Save
-          </button>
-        </div>
-      </div>
+    </div>
+   
 
+    
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+        <label for="fname">Property Description</label>
+      </div>
+      <div class="col-md-9">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-prepend" style="width: 2.6rem"></div>
+            
+                   <textarea class="form-control" formControlName="job_post_content" id="job_post_content" name="job_post_content"
+                   placeholder="Property Description"
+                   required></textarea>
+          </div>
+        </div>
+      </div>
       
+    </div>
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+        <label for="fname">Job Location</label>
+      </div>
+      <div class="col-md-9">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-prepend" style="width: 2.6rem"></div>
+            
+                   <textarea class="form-control" formControlName="job_address" id="job_address" name="job_address"
+                   placeholder="Job Location"
+                   required></textarea>
+          </div>
+        </div>
+      </div>
       
-    </form>
-  </div>
-  
+    </div>
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+        <label for="lname">Job Type</label>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-prepend" style="width: 2.6rem"></div>
+            
+                   <select class="form-control"  formControlName="job_type" name="job_type" id="job_type" required>
+                    <option value=" " >Select A Job Type</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Hourly">Hourly</option>
+                    
+                  </select>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-md-3">
+        <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put name validation error messages here -->
+                        </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+        <label for="lname">Job Category</label>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-prepend" style="width: 2.6rem"></div>
+            
+                   <select class="form-control"  formControlName="job_category" name="job_category" id="job_category" required>
+                    <option value=" " >Select A Job Category</option>
+                    <option value="Housekeeping & Cleaning">Housekeeping & Cleaning</option>
+                    <option value="Construction & Property">Construction & Property</option>
+                    <option value="Marketing, Advertising & PR">Marketing, Advertising & PR</option>
+                   
+                    
+                  </select>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-md-3">
+        <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put name validation error messages here -->
+                        </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+        <label for="lname">Job Level</label>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-prepend" style="width: 2.6rem"></div>
+            
+                   <select class="form-control"  formControlName="job_level" name="job_level" id="job_level" required>
+                    <option value=" " >Select A Job Lavel</option>
+                    <option value="Experienced">Experienced</option>
+                    <option value="Freshers">Freshers</option>
+                   
+                    
+                  </select>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-md-3">
+        <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put name validation error messages here -->
+                        </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+        <label for="fname">Closes date</label>
+      </div>
+      <div class="col-md-9">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-prepend" style="width: 2.6rem"></div>
+            <input class="form-control" formControlName="closes_date" id="closes_date" name="closes_date"
+                   placeholder="Closes date"
+                   required type="date">
+                   
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+        <label for="fname">Salary details</label>
+      </div>
+      <div class="col-md-9">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-prepend" style="width: 2.6rem"></div>
+            <input class="form-control" formControlName="salary_details" id="salary_details" name="salary_details"
+                   placeholder="salary details"
+                   required type="text">
+                   
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-3 field-label-responsive">
+        <label for="fname">Salary</label>
+      </div>
+      <div class="col-md-9">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-prepend" style="width: 2.6rem"></div>
+            <input class="form-control" formControlName="salary" id="salary" name="salary"
+                   placeholder="salary"
+                   required type="text">
+                   
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- <div class="row">
+      <div class="col-md-3 field-label-responsive">
+        <label for="email">Job Thumbnail Image</label>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"></div>
+            <input class="form-control" (change)="onFileSelect($event)"  id="productImages" name="productImages"
+                   
+                   required type="file" readonly>
+          </div>
+        </div>
+      </div>
+      
+    </div> -->
+
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <button [disabled]="(jobForm.invalid || jobForm.pending) && jobForm.touched "
+                class="btn btn-success" type="submit">
+          <i class="fa fa-user-plus"></i> Save
+        </button>
+      </div>
+    </div>
+
+    
+    
+  </form>
+</div>

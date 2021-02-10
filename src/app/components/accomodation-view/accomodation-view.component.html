@@ -29,30 +29,55 @@
         
   
         <!-- Product thumb imgs -->
-        <div class="col-md-6  col-md-pull-5">
+        <div class="col-md-12  col-md-pull-5">
           
-          <ng-image-slider [images]="imageObject" imageSize='{width: 300, height: 300, space: 3}' #nav></ng-image-slider>
+          <!-- <ng-image-slider [images]="imageObject" imageSize='{width: 300, height: 300, space: 3}' infinite=true #nav></ng-image-slider> -->
+
+          <carousel
+          [images]="images"
+          [objectFit]="'cover'"
+          [cellWidth]="'100%'"
+          [arrowsOutside]="true"
+          [autoplay]="true"
+          [dots]="true"
+          [loop]="false"
+          [height]="800"
+          >
+          </carousel>
         </div>
         <!-- /Product thumb imgs -->
   
         <!-- Product details -->
-        <div class="col-md-6">
+        <div class="col-md-12">
 
           <div class="product-details">
             <h2 >{{myData?.title}}</h2>
             
-            
+            <p>Address: {{myData?.address}}</p>
+            <hr>
+            <i class="fa fa-bed" aria-hidden="true"></i>  {{myData?.bedroom}}&nbsp;
+            <i class="fa fa-bath" aria-hidden="true"></i>  {{myData?.bathroom}}&nbsp;
+            <i class="fa fa-car" aria-hidden="true"></i>   {{myData?.parking_area}}&nbsp;
+            <i class="fa fa-home" aria-hidden="true"></i>   {{myData?.floor_area}}&nbsp;
+            <hr>
+            <h3>Property Description:-</h3>
             <p>
               {{myData?.post_content}}
             </p>
   
-           
-  
-            
-  
-            
-  
+            <hr>
+            <h3>Inspection times:-</h3>
+            Inspection Date : {{myData?.inspections_date}}
+            Inspection time : {{myData?.floor_area}}
+            <hr>
+            <h3>Available:</h3>
+            Available Date : {{myData?.floor_area}}
+            <hr>
+            <h3>Furnished:</h3>
+            Furnished Date : {{myData?.furnished}}
           </div>
+          <button mat-button (click)="onclickApply(myData?.accomodation_id )" color="accent" *ngIf="userRole == '555' || userRole == null">Apply Accomodations</button>
+          <button mat-button (click)="onclickEdit(myData?.accomodation_id )" color="accent" *ngIf="userRole == '666'">Edit Accomodations</button>
         </div>
         <!-- /Product details -->
   

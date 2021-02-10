@@ -4,6 +4,11 @@
         {{registrationMessage}}
       </div>
     </ng-container>
+    <ng-container *ngIf="errorMessage?.length > 0">
+      <div class="alert alert-denger alert-dismissible">
+        {{errorMessage}}
+      </div>
+    </ng-container>
   
     <form (ngSubmit)="registerAccomodation()" [formGroup]="accomodationForm" class="form-horizontal" novalidate>
       <div class="row">
@@ -245,6 +250,38 @@
               <input class="form-control" formControlName="available" id="available" name="available"
                      placeholder="Available*"
                      required type="date">
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Inspections Date</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="inspections_date" id="inspections_date" name="inspections_date"
+                     placeholder="Available*"
+                     required type="date">
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Inspections Time</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="inspections_time" id="inspections_time" name="inspections_time"
+                     placeholder="Available*"
+                     required type="time">
             </div>
           </div>
         </div>

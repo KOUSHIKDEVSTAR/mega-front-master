@@ -1,1 +1,180 @@
-<p>food-add works!</p>
+<div class="container ">
+    <ng-container *ngIf="registrationMessage?.length > 0">
+      <div class="alert alert-success alert-dismissible">
+        {{registrationMessage}}
+      </div>
+    </ng-container>
+    <ng-container *ngIf="errorMessage?.length > 0">
+      <div class="alert alert-denger alert-dismissible">
+        {{errorMessage}}
+      </div>
+    </ng-container>
+  
+    <form (ngSubmit)="registerfood()" [formGroup]="foodForm" class="form-horizontal" novalidate>
+      <div class="row">
+        
+        <div class="col-md-12">
+          <h2>Add Food</h2>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Title</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="title" id="title" name="title"
+                     placeholder="Title"
+                     required type="text">
+                     <input class="form-control" formControlName="author" id="author" name="author"
+                     placeholder="Title"
+                     type="hidden">
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Food Content</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              
+                     <textarea class="form-control" formControlName="food_contract" id="food_contract" name="food_contract"
+                     placeholder="Food Content"
+                     required></textarea>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">About this student discount</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              
+                     <textarea class="form-control" formControlName="description" id="description" name="description"
+                     placeholder="About this student discount"
+                     required></textarea>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Restaurants name</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              
+                     <textarea class="form-control" formControlName="restaurants_name" id="restaurants_name" name="restaurants_name"
+                     placeholder="Terms & Conditions"
+                     required></textarea>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      
+      
+
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Closes date</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="closes_date" id="closes_date" name="closes_date"
+                     placeholder="Closes date"
+                     required type="date">
+                     
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Discount</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="discount" id="discount" name="discount"
+                     placeholder="Discounts"
+                     required type="text">
+                     
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="fname">Discount Code</label>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-prepend" style="width: 2.6rem"></div>
+              <input class="form-control" formControlName="discount_code" id="discount_code" name="discount_code"
+                     placeholder="Discount code"
+                     required type="text">
+                     
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="email">Job Thumbnail Image</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem"></div>
+              <input class="form-control" (change)="onFileSelect($event)"  id="productImages" name="productImages"
+                     
+                     required type="file" readonly>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <button [disabled]="(foodForm.invalid || foodForm.pending) && foodForm.touched "
+                  class="btn btn-success" type="submit">
+            <i class="fa fa-user-plus"></i> Save
+          </button>
+        </div>
+      </div>
+
+      
+      
+    </form>
+  </div>
+  

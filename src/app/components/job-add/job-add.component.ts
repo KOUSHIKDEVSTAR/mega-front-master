@@ -18,7 +18,9 @@ export class JobAddComponent implements OnInit {
   myUser: any;
   jobForm: FormGroup;
   registrationMessage: string;
-  constructor(private fb: FormBuilder,
+  errorMessage: any;
+  constructor(
+    private fb: FormBuilder,
     private checkEmailService: CheckEmailService,
     private userService: UserService,
     private jobService: JobService,
@@ -36,6 +38,8 @@ this.jobForm = fb.group({
   job_level:['',[Validators.required]],
   closes_date:['',[Validators.required]],
   salary_details:['',[Validators.required]],
+  job_category:['',[Validators.required]],
+  salary:['',[Validators.required]],
   
   productImages:[''],
   
@@ -50,6 +54,7 @@ get formControls() {
      
       job_type: ' ',
       job_level: ' ',
+      job_category: ' ',
       
     })
     this.userService.userData$
@@ -75,7 +80,7 @@ get formControls() {
     
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      console.log('FILE UP  :', file);
+      // console.log('FILE UP  :', file);
       
       this.jobForm.get('productImages').setValue(file);
     }
@@ -84,7 +89,7 @@ get formControls() {
 
     if (this.jobForm.invalid) {
       // console.log('In val form ');
-      
+      this.errorMessage = 'Some Miss';
       return;
     }
 

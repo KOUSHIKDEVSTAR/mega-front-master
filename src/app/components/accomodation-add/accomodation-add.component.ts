@@ -17,6 +17,7 @@ export class AccomodationAddComponent implements OnInit {
   myUser: any;
   accomodationForm: FormGroup;
   registrationMessage: string;
+  errorMessage: string;
   constructor(private fb: FormBuilder,
     private checkEmailService: CheckEmailService,
     private userService: UserService,
@@ -38,6 +39,8 @@ this.accomodationForm = fb.group({
   furnished:['',[Validators.required]],
   dwelling_type:['',[Validators.required]],
   available:['',[Validators.required]],
+  inspections_date:['',[Validators.required]],
+  inspections_time:['',[Validators.required]],
   productImagesMulti:['',[Validators.required]],
 });
 }
@@ -78,7 +81,7 @@ get formControls() {
     
     if (event.target.files.length > 0) {
       const file = event.target.files;
-      console.log('FILE UP  :', file);
+      // console.log('FILE UP  :', file);
       
       this.accomodationForm.get('productImagesMulti').setValue(file);
     }
@@ -87,7 +90,7 @@ get formControls() {
 
     if (this.accomodationForm.invalid) {
       // console.log('In val form ');
-      
+      this.registrationMessage = 'Some Missing';
       return;
     }
 

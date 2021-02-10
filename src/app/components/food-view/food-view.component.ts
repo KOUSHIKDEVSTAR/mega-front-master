@@ -1,23 +1,20 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { JobService } from '@app/services/job.service';
+import { FoodService } from '@app/services/food.service';
 import {environment} from '../../../environments/environment';
 import {ActivatedRoute, Router} from '@angular/router';
 import Swal from 'sweetalert2';
 
-
-
 @Component({
-  selector: 'app-job-view',
-  templateUrl: './job-view.component.html',
-  styleUrls: ['./job-view.component.scss']
+  selector: 'app-food-view',
+  templateUrl: './food-view.component.html',
+  styleUrls: ['./food-view.component.scss']
 })
-export class JobViewComponent implements OnInit {
-
+export class FoodViewComponent implements OnInit {
   userRole:any;
   myData:any;
   BASE_URL: any = environment.BASE_URL;
   constructor(
-    private jobService: JobService,
+    private foodService: FoodService,
     private route: ActivatedRoute,
     private router: Router,
     private cdr: ChangeDetectorRef,
@@ -27,16 +24,15 @@ export class JobViewComponent implements OnInit {
     this.uesrRoleFun();
     this.viewData();
   }
-
   viewData(){
     let serverData = this.route.snapshot.paramMap.get('id');
    
-     let bodydata = { job_post_id: serverData}; 
+     let bodydata = { food_post_id: serverData}; 
     
-    this.jobService.fatchData(bodydata).subscribe((response: any) => {
+    this.foodService.fatchData(bodydata).subscribe((response: any) => {
       
       this.myData = response.data[0];
-      // console.log(this.myData);
+      console.log(this.myData);
       
     });
     
@@ -58,14 +54,14 @@ export class JobViewComponent implements OnInit {
       if (result.isConfirmed) {
         let bodydata = {job_post_id: id};
        
-        // console.log(bodydata);
-        this.router.navigate(['/jobs-apply/', id]);      
+        console.log(bodydata);
+        // this.router.navigate(['/jobs-apply/', id]);      
       }
     })
     
   }
   onclickEdit(id){
-    this.router.navigate(['/vendor-job-edit/', id]);
+    this.router.navigate(['/vendor-food-edit/', id]);
   }
 
 uesrRoleFun(){
@@ -74,6 +70,7 @@ uesrRoleFun(){
   // console.log('USER ROLE',this.userRole);
   
 }
+
 
 
 

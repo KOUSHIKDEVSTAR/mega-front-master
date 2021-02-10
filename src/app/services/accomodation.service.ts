@@ -45,7 +45,9 @@ export class AccomodationService {
       floor_area,
       furnished,
       dwelling_type,
-      available
+      available,
+      inspections_date,
+      inspections_time,
     } = formData;
     
     return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/accomodation/add-accomodation`, {
@@ -62,7 +64,9 @@ export class AccomodationService {
       floor_area,
       furnished,
       dwelling_type,
-      available
+      available,
+      inspections_date,
+      inspections_time,
      
     });
   }
