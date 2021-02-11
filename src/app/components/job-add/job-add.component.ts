@@ -41,7 +41,7 @@ this.jobForm = fb.group({
   job_category:['',[Validators.required]],
   salary:['',[Validators.required]],
   
-  productImages:[''],
+  // productImages:[''],
   
 });
 }
@@ -99,19 +99,20 @@ get formControls() {
     // @ts-ignore
     this.jobService.registerjob({...this.jobForm.value}).subscribe((response: any) => {
       this.registrationMessage = response.message;
-      
-      if(response.message != ''){
-        var fd = new FormData();
-        let imgId = uuidv4();
-        fd.append(`productImages`, this.jobForm.value.productImages, `${imgId}.jpg`);
-        this.jobService.imageData(fd,'job',response.lastId).subscribe((response: any) => {
-          // this.registrationMessage = response.message;
-          this.toastr.success('Successful', this.registrationMessage);
-          this.router.navigate(['/vendor-profile']);  
-          // this.jobForm.reset(); 
-        });
+      // this.registrationMessage = response.message;
+      this.toastr.success('Successful', this.registrationMessage);
+      this.jobForm.reset(); 
+      // if(response.message != ''){
+      //   var fd = new FormData();
+      //   let imgId = uuidv4();
+      //   fd.append(`productImages`, this.jobForm.value.productImages, `${imgId}.jpg`);
+      //   this.jobService.imageData(fd,'job',response.lastId).subscribe((response: any) => {
+          
+      //     this.router.navigate(['/vendor-profile']);  
+          
+      //   });
         
-      }
+      // }
     });
 
     
