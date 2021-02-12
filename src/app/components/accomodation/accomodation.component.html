@@ -14,7 +14,7 @@
       <div class="row">
         
         
-        <div class="col-md-4 col-sm-6" *ngFor="let accomo of accomodation; let i = index">
+        <div class="col-md-4 col-sm-6 pointer" *ngFor="let accomo of accomodation; let i = index">
           <div class="card my-2" (click)="selectProduct(accomo.accomodation_id)">
             <img [src]="(accomo.accomodation_post_images && accomo.accomodation_post_images[0]) ? BASE_URL+'/'+accomo.accomodation_post_images[0] : ''" alt="{{accomo.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProduct(accomo.accomodation_id)">
             <div class="card-header">

@@ -15,6 +15,7 @@ export class AccomodationViewComponent implements OnInit {
   @ViewChild('nav') slider: NgImageSliderComponent;
   myData: any;
   userRole:any;
+  userID:any;
   BASE_URL: any = environment.BASE_URL;
 //   imageObject: Array<object> = [{
 //     image: '',
@@ -66,7 +67,9 @@ images = [
 
   uesrRoleFun(){
     let userRoleData =localStorage.getItem('userRole');
+    let userIDData =localStorage.getItem('userID');
     this.userRole =userRoleData;
+    this.userID =userIDData;
     // console.log('USER ROLE',this.userRole);
     
   }

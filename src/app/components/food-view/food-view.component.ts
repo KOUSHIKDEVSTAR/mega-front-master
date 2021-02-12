@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class FoodViewComponent implements OnInit {
   userRole:any;
+  userID:any;
   myData:any;
   BASE_URL: any = environment.BASE_URL;
   constructor(
@@ -66,8 +67,9 @@ export class FoodViewComponent implements OnInit {
 
 uesrRoleFun(){
   let userRoleData =localStorage.getItem('userRole');
-  this.userRole =userRoleData;
-  // console.log('USER ROLE',this.userRole);
+    let userIDData =localStorage.getItem('userID');
+    this.userRole =userRoleData;
+    this.userID =userIDData;
   
 }
 

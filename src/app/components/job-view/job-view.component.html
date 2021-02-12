@@ -66,7 +66,7 @@
             </p>
            
             <button mat-button (click)="onclickApply(myData?.job_post_id)" color="accent" *ngIf="userRole == '555' || userRole == null">Apply Job</button>
-            <button mat-button (click)="onclickEdit(myData?.job_post_id)" color="accent" *ngIf="userRole == '666'">Edit Job</button>
+            <button mat-button (click)="onclickEdit(myData?.job_post_id)" color="accent" *ngIf="userRole == '666'  && userID == myData?.author">Edit Job</button>
   
             
   

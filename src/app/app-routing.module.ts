@@ -158,7 +158,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes, { useHash: true, scrollPositionRestoration: 'enabled' }),
     // MatPaginator,
     // MatTableDataSource
   ],
@@ -166,3 +166,6 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
+
+// Angular 10 Scroll to top on Route Change
+// scrollPositionRestoration: 'enabled'

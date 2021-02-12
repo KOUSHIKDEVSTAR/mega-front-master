@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
-  name = 'JOHN DOE';
+  title = 'Student Beans AU';
+  name = 'JONNY DOE';
+  onActivate(event){
+    window.scroll(0,0);
+  }
 }
