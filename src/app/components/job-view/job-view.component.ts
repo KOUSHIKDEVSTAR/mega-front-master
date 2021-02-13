@@ -16,6 +16,7 @@ export class JobViewComponent implements OnInit {
   userRole:any;
   userID:any;
   myData:any;
+  checkData:any;
   BASE_URL: any = environment.BASE_URL;
   constructor(
     private jobService: JobService,
@@ -27,6 +28,10 @@ export class JobViewComponent implements OnInit {
   ngOnInit(): void {
     this.uesrRoleFun();
     this.viewData();
+    if(this.userRole == '555'){
+      this.oncheck();
+    }
+    
   }
 
   viewData(){
@@ -43,7 +48,27 @@ export class JobViewComponent implements OnInit {
     
 
     }
-
+    oncheck(){
+      let serverData = this.route.snapshot.paramMap.get('id');
+     let bodydata = { job_post_id: serverData , author:this.userID }; 
+    
+     this.jobService.checkJobApply(bodydata).subscribe((response: any) => {
+       
+       this.checkData = response.data;
+       
+       if(response.data != ''){
+        // console.log(this.checkData);
+        this.checkData = true;
+        console.log('if',this.checkData);
+        
+       }else{
+         this.checkData = false;
+         console.log('else',this.checkData);
+         
+       }
+     });
+      
+    }
   onclickApply(id){
     
    

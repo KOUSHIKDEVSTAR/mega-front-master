@@ -153,6 +153,23 @@ getApplyJobsUser(formData: any) : Observable<{ message: string }> {
       userID
     });
 }
+/* This is to fetch all products from the backend server */
+getApplyJobsVendor(formData: any) : Observable<{ message: string }> {
+  const {userID, 
+    } = formData;
+    return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/all-job-vendor-view`, {
+      userID
+    });
+}
+/* This is to fetch all products from the backend server */
+checkJobApply(formData: any) : Observable<{ message: string }> {
+  const {job_post_id,author 
+    } = formData;
+    return this.httpClient.post<{ message: string }>(`${this.SERVER_URL}/job/check-apply-job`, {
+      job_post_id,author
+    });
+}
+
 
 /**Image Data */
 imageData(formData: any,job,id): Observable<{ message: string }> {

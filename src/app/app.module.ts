@@ -56,6 +56,7 @@ import { JobViewComponent } from './components/job-view/job-view.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { FoodViewComponent } from './components/food-view/food-view.component';
+import { ApplyedJobListComponent } from './components/applyed-job-list/applyed-job-list.component';
 
 const config = new AuthServiceConfig([
   {
@@ -107,7 +108,8 @@ export function provideConfig() {
     ApplyJobViewComponent,
     AccomodationViewComponent,
     JobViewComponent,
-    FoodViewComponent
+    FoodViewComponent,
+    ApplyedJobListComponent
   ],
   imports: [
     BrowserModule,

@@ -74,7 +74,7 @@
             </div> 
           </div>
           <div class="card-body">
-            <h6>{{accomo.post_content.substr(0, 50)}} ...</h6>
+            <h6>{{accomo.post_content.substr(0, 200)}} ...</h6>
             <p class="lead">{{accomo.price | currency:'USD'}}</p>
           </div>
 
@@ -95,14 +95,14 @@
       </div>
       <div class="col-md-4 col-sm-6 pointer" *ngFor="let jobs of jobsPost; let i = index">
         <div class="card my-2" (click)="selectProductJob(jobs.job_post_id )">
-          <img [src]="(jobs.job_thumbnail && jobs.job_thumbnail) ? BASE_URL+'/'+jobs.job_thumbnail : ''" alt="{{jobs.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProductJob(jobs.job_post_id)">
+          <!-- <img [src]="(jobs.job_thumbnail && jobs.job_thumbnail) ? BASE_URL+'/'+jobs.job_thumbnail : ''" alt="{{jobs.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProductJob(jobs.job_post_id)"> -->
           <div class="card-header">
             <div class="card-title">
               <p>{{jobs.job_post_title | titlecase}}</p>
             </div> 
           </div>
           <div class="card-body">
-            <h6>{{jobs.job_post_content.substr(0, 100)}} ...</h6>
+            <h6>{{jobs.job_post_content.substr(0, 200)}} ...</h6>
             
           </div>
 
@@ -130,7 +130,7 @@
             </div> 
           </div>
           <div class="card-body">
-            <h6>{{food.description.substr(0, 100)}} ...</h6>
+            <h6>{{food.description.substr(0, 200)}} ...</h6>
             
           </div>
 

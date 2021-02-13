@@ -60,7 +60,7 @@
             </p>
            <hr>
 
-            <button mat-button (click)="onclickApply(myData?.food_post_id)" color="accent" *ngIf="userRole == '555' || userRole == null">Apply Food</button>
+            <a href="{{myData?.url}}" *ngIf="userRole == '555' || userRole == null">Apply Food</a>
             <button mat-button (click)="onclickEdit(myData?.food_post_id)" color="accent" *ngIf="userRole == '666'  && userID == myData?.author">Edit Job</button>
   
             

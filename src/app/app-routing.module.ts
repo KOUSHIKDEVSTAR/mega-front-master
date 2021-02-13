@@ -36,6 +36,7 @@ import { ApplyJobListComponent } from './components/apply-job-list/apply-job-lis
 import { AccomodationViewComponent } from './components/accomodation-view/accomodation-view.component';
 import { JobViewComponent } from './components/job-view/job-view.component';
 import { FoodViewComponent } from './components/food-view/food-view.component';
+import { ApplyedJobListComponent } from './components/applyed-job-list/applyed-job-list.component';
 
 
 
@@ -116,6 +117,9 @@ const routes: Routes = [
       },
       {
         path: 'vendor-job-list', component: JobVendorListComponent , canActivate: [VendorGuard]
+      },
+      {
+        path: 'vendor-applyed-job-list', component: ApplyedJobListComponent , canActivate: [VendorGuard]
       },
       {
         path: 'vendor-job-add', component: JobAddComponent , canActivate: [VendorGuard]
