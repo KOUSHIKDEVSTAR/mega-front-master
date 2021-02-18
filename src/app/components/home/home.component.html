@@ -1,50 +1,8 @@
 <!-- SECTION -->
 <div class="section">
-  <img src="/assets/img/bg1.jpg" alt="" style="width: 100%;">
+  <img src="/assets/img/pexels-anastasiya-gepp-1462630.jpg" alt="" style="width: 100%; height: 900px;">
   <!-- container -->
-  <!-- <div class="container">
-   
-    <div class="row">
-      
-      <div class="col-md-4 col-xs-6">
-        <div class="shop">
-          <div class="shop-img">
-            <img src="/assets/img/shop01.png" alt="">
-          </div>
-          <div class="shop-body">
-            <h3>Jobs<br>List</h3>
-            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-      </div>
-     
-      <div class="col-md-4 col-xs-6">
-        <div class="shop">
-          <div class="shop-img">
-            <img src="/assets/img/shop03.png" alt="">
-          </div>
-          <div class="shop-body">
-            <h3>Accomodations<br>List</h3>
-            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-4 col-xs-6">
-        <div class="shop">
-          <div class="shop-img">
-            <img src="/assets/img/shop02.png" alt="">
-          </div>
-          <div class="shop-body">
-            <h3>Food<br>List</h3>
-            <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-      </div>
-     
-    </div>
-    
-  </div> -->
+  
   
 </div>
 <!-- /SECTION -->
@@ -59,7 +17,7 @@
       
       <div class="col-md-12">
         <div class="section-title">
-          <h3 class="title">New accomodations</h3>
+          <h3 class="title">Room rent</h3>
 
         </div>
       </div>
@@ -70,54 +28,68 @@
           <img [src]="(accomo.accomodation_post_images && accomo.accomodation_post_images[0]) ? BASE_URL+'/'+accomo.accomodation_post_images[0] : ''" alt="{{accomo.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProductAcco(accomo.accomodation_id)">
           <div class="card-header">
             <div class="card-title">
-              <p>{{accomo.title | titlecase}}</p>
+              <!-- <p>{{accomo.title | titlecase}}</p> -->
+              <p class="lead">{{accomo.accomodation_price}}</p><p>{{accomo.accomodation_type}}</p>
             </div> 
           </div>
           <div class="card-body">
-            <h6>{{accomo.post_content.substr(0, 200)}} ...</h6>
-            <p class="lead">{{accomo.price | currency:'USD'}}</p>
+            <h6>{{accomo.address}}</h6>
+            
+            <i class="fa fa-bed" aria-hidden="true"></i>  {{accomo.bedroom}}&nbsp;&nbsp;
+            <i class="fa fa-bath" aria-hidden="true"></i>  {{accomo.bathroom}}&nbsp;&nbsp;
+            <i class="fa fa-car" aria-hidden="true"></i>   {{accomo.parking_area}}&nbsp;&nbsp;
+            <hr>
           </div>
-
-          <div class="row d-flex justify-content-center border-primary my-3">
-            <div class="col-md-6">
-              
-            </div>
-          </div>
-
-
         </div>
       </div>
+      <div class="col-md-12 text-center">
+        <a routerLink="/accomodations" class="btn btn-primary"> View All Room Rent</a>
+      </div>
+      
       <div class="col-md-12">
         <div class="section-title">
-          <h3 class="title">New Jobs</h3>
+          <h3 class="title">Jobs</h3>
 
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 pointer" *ngFor="let jobs of jobsPost; let i = index">
+      <div class="col-md-12 col-sm-6 pointer" *ngFor="let jobs of jobsPost; let i = index">
         <div class="card my-2" (click)="selectProductJob(jobs.job_post_id )">
-          <!-- <img [src]="(jobs.job_thumbnail && jobs.job_thumbnail) ? BASE_URL+'/'+jobs.job_thumbnail : ''" alt="{{jobs.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProductJob(jobs.job_post_id)"> -->
+         
           <div class="card-header">
             <div class="card-title">
               <p>{{jobs.job_post_title | titlecase}}</p>
             </div> 
           </div>
           <div class="card-body">
-            <h6>{{jobs.job_post_content.substr(0, 200)}} ...</h6>
-            
-          </div>
-
-          <div class="row d-flex justify-content-center border-primary my-3">
-            <div class="col-md-6">
-              
+            <div class="row">
+              <div class="col-md-8">
+                <p>{{jobs.job_post_content.substr(0, 500)}} ...</p>
+                <ol>
+                  <li>{{jobs.job_type}}</li>
+                </ol>
+                <p></p>
+                <p>{{jobs.salary_details}}</p>
+              </div>
+              <div class="col-md-4">
+                <p>{{jobs.job_address}}</p>
+                <p>{{jobs.created_at.substring(0,10)}}</p>
+              </div>
             </div>
+            
+            
+            
+            
+           
           </div>
-
-
         </div>
       </div>
+      <div class="col-md-12 text-center">
+        <a routerLink="/jobs" class="btn btn-primary"> View All Jobs </a>
+      </div>
+     
       <div class="col-md-12">
         <div class="section-title">
-          <h3 class="title">New Food</h3>
+          <h3 class="title">Food</h3>
 
         </div>
       </div>
@@ -125,24 +97,20 @@
         <div class="card my-2" (click)="selectProductFood(food.food_post_id  )">
           <img [src]="(food.image) ? BASE_URL+'/'+food.image : ''" alt="{{food.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProductFood(food.food_post_id )">
           <div class="card-header">
-            <div class="card-title">
+            <div class="card-title text-center">
               <p (click)="selectProductFood(food.food_post_id  )">{{food.title | titlecase}}</p>
             </div> 
           </div>
-          <div class="card-body">
+          <!-- <div class="card-body">
             <h6>{{food.description.substr(0, 200)}} ...</h6>
             
-          </div>
-
-          <div class="row d-flex justify-content-center border-primary my-3">
-            <div class="col-md-6">
-              
-            </div>
-          </div>
-
-
+          </div> -->
         </div>
       </div>
+      <div class="col-md-12 text-center">
+        <a routerLink="/food" class="btn btn-primary"> View All Food </a>
+      </div>
+      
     </div>
     
   </div>

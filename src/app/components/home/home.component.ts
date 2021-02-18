@@ -34,19 +34,19 @@ export class HomeComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe((prods: ServerResponse) => {
-      this.products = prods.products;
-    });
-    this.accomodationService.getAllAccomodation().subscribe((prods: any) => {
+    // this.productService.getAllProducts().subscribe((prods: ServerResponse) => {
+    //   this.products = prods.products;
+    // });
+    this.accomodationService.getAllAccomodationHome().subscribe((prods: any) => {
       this.accomodation = prods.data;
       this.accomodation.forEach((item: any, index)=>{
         item.accomodation_post_images = JSON.parse(item.accomodation_post_images);
       });
       // console.log('ACC',this.accomodation);
-      this.jobService.getAllJobs().subscribe((prods: any) => {
+      this.jobService.getAllJobsHome().subscribe((prods: any) => {
         this.jobsPost = prods.data;     
       });
-      this.foodService.getAllfood().subscribe((prods: any) => {
+      this.foodService.getAllfoodHome().subscribe((prods: any) => {
         this.foodPost = prods.data;     
       });
     });

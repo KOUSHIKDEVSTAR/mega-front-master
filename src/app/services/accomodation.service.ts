@@ -80,7 +80,14 @@ export class AccomodationService {
   });
 }
 
-getAllAccomodation(numberOfResults= 10) : Observable<any> {
+getAllAccomodationHome(numberOfResults= 2) : Observable<any> {
+  return this.http.get<any>(this.SERVER_URL + '/accomodation/all-accomodation-home', {
+    params: {
+      limit: numberOfResults.toString()
+    }
+  });
+}
+getAllAccomodation(numberOfResults= 2) : Observable<any> {
   return this.http.get<any>(this.SERVER_URL + '/accomodation/all-accomodation-view', {
     params: {
       limit: numberOfResults.toString()

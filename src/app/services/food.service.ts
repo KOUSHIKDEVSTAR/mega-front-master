@@ -52,8 +52,11 @@ export class FoodService {
     });
   }
  /* This is to fetch all products from the backend server */
+ getAllfoodHome() : Observable<any> {
+  return this.http.get<any>(this.SERVER_URL + '/food/all-food-home');
+}
  getAllfood() : Observable<any> {
-  return this.http.get<any>(this.SERVER_URL + '/food/all-job-view');
+  return this.http.get<any>(this.SERVER_URL + '/food/all-food-view');
 }
 getAllProducts(formData: any): Observable<{ message: string }> {
   const {userID, 

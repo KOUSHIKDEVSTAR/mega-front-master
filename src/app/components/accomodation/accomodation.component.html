@@ -14,7 +14,7 @@
       <div class="row">
         
         
-        <div class="col-md-4 col-sm-6 pointer" *ngFor="let accomo of accomodation; let i = index">
+        <!-- <div class="col-md-4 col-sm-6 pointer" *ngFor="let accomo of accomodation; let i = index">
           <div class="card my-2" (click)="selectProduct(accomo.accomodation_id)">
             <img [src]="(accomo.accomodation_post_images && accomo.accomodation_post_images[0]) ? BASE_URL+'/'+accomo.accomodation_post_images[0] : ''" alt="{{accomo.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProduct(accomo.accomodation_id)">
             <div class="card-header">
@@ -34,6 +34,26 @@
             </div>
 
 
+          </div>
+        </div> -->
+
+        <div class="col-md-4 col-sm-6 pointer" *ngFor="let accomo of accomodation; let i = index">
+          <div class="card my-2" (click)="selectProduct(accomo.accomodation_id)">
+            <img [src]="(accomo.accomodation_post_images && accomo.accomodation_post_images[0]) ? BASE_URL+'/'+accomo.accomodation_post_images[0] : ''" alt="{{accomo.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProduct(accomo.accomodation_id)">
+            <div class="card-header">
+              <div class="card-title">
+                <!-- <p>{{accomo.title | titlecase}}</p> -->
+                <p class="lead">{{accomo.accomodation_price}}</p><p>{{accomo.accomodation_type}}</p>
+              </div> 
+            </div>
+            <div class="card-body">
+              <h6>{{accomo.address}}</h6>
+              
+              <i class="fa fa-bed" aria-hidden="true"></i>  {{accomo.bedroom}}&nbsp;&nbsp;
+              <i class="fa fa-bath" aria-hidden="true"></i>  {{accomo.bathroom}}&nbsp;&nbsp;
+              <i class="fa fa-car" aria-hidden="true"></i>   {{accomo.parking_area}}&nbsp;&nbsp;
+              <hr>
+            </div>
           </div>
         </div>
       </div>

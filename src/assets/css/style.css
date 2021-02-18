@@ -412,7 +412,7 @@ textarea.input {
 
 #top-header {
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   background-color: #1E1F29;
 }
 
@@ -446,7 +446,7 @@ textarea.input {
 #header {
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: #15161D;
+  background-color: #ffff;
 }
 
 .header-logo {
@@ -455,8 +455,12 @@ textarea.input {
 
 .header-logo .logo img {
   display: block;
-}
+  height: 81px;
 
+}
+img.card-img-top {
+    height: 200px;
+}
 /*----------------------------*\
 	Search
 \*----------------------------*/

@@ -15,7 +15,7 @@
         <div class="row">
           
           
-          <div class="col-md-12 col-sm-6 pointer" *ngFor="let food of foodPost; let i = index" (click)="selectProduct(food.food_post_id  )">
+          <!-- <div class="col-md-12 col-sm-6 pointer" *ngFor="let food of foodPost; let i = index" (click)="selectProduct(food.food_post_id  )">
             <div class="card my-2" (click)="selectProduct(food.food_post_id  )">
               <img [src]="(food.image) ? BASE_URL+'/'+food.image : ''" alt="{{food.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProduct(food.food_post_id )">
               <div class="card-header">
@@ -36,7 +36,22 @@
   
   
             </div>
+          </div> -->
+          <div class="col-md-4 col-sm-6 pointer" *ngFor="let food of foodPost; let i = index" (click)="selectProduct(food.food_post_id  )">
+            <div class="card my-2" (click)="selectProduct(food.food_post_id  )">
+              <img [src]="(food.image) ? BASE_URL+'/'+food.image : ''" alt="{{food.name}}" width="200px" class="card-img-top" style="cursor: pointer;" (click)="selectProduct(food.food_post_id )">
+              <div class="card-header">
+                <div class="card-title text-center">
+                  <p (click)="selectProduct(food.food_post_id  )">{{food.title | titlecase}}</p>
+                </div> 
+              </div>
+              <!-- <div class="card-body">
+                <h6>{{food.description.substr(0, 200)}} ...</h6>
+                
+              </div> -->
+            </div>
           </div>
+
         </div>
     </div>
     </div>

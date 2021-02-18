@@ -58,6 +58,9 @@ export class JobService {
     });
   }
  /* This is to fetch all products from the backend server */
+ getAllJobsHome() : Observable<any> {
+  return this.http.get<any>(this.SERVER_URL + '/job/all-job-home');
+}
  getAllJobs() : Observable<any> {
   return this.http.get<any>(this.SERVER_URL + '/job/all-job-view');
 }
