@@ -28,6 +28,7 @@ export class JobViewComponent implements OnInit {
   ngOnInit(): void {
     this.uesrRoleFun();
     this.viewData();
+    this.oncheck();
     if(this.userRole == '555'){
       this.oncheck();
     }
